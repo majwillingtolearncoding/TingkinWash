@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="dashboard-card">
+
+    <h1>Welcome to TingkinWash!</h1>
+
+    <p>Your laundry service dashboard.</p>
+
+    <div class="dashboard-links">
+
+        <div class="dashboard-item">
+            <h3>My Bookings</h3>
+            <p>View your laundry bookings.</p>
+        </div>
+
+        <div class="dashboard-item">
+            <h3>Laundry Services</h3>
+            <p>Explore our available services.</p>
+        </div>
+
+        <div class="dashboard-item">
+            <h3>My Profile</h3>
+            <p>Manage your account details.</p>
+        </div>
+
+    </div>
+
+    <form asp-controller="Account"
+          asp-action="Logout"
+          method="post">
+
+        <button type="submit" class="main-button">
+            LOG OUT
+        </button>
+
+    </form>
+
+</div>

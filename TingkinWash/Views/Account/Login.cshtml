@@ -1,0 +1,49 @@
+﻿@model TingkinWash.ViewModels.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+<div class="auth-card login-card">
+        <h1>LOGIN TO YOUR<br />ACCOUNT</h1>
+
+
+    <form asp-action="Login" asp-controller="Account" method="post">
+        <div asp-validation-summary="ModelOnly" class="validation-message"></div>
+
+        <div class="logo-container">
+            <img src="~/images/tingkins.png"
+            alt="TingkinWash Logo"
+            class="logo" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Username"></label>
+            <input asp-for="Username" class="form-control pill-input" autocomplete="username" />
+            <span asp-validation-for="Username" class="validation-message"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Password"></label>
+            <input asp-for="Password" class="form-control pill-input" autocomplete="current-password" />
+            <span asp-validation-for="Password" class="validation-message"></span>
+        </div>
+
+        <div class="remember-row">
+            <input asp-for="RememberMe" />
+            <label asp-for="RememberMe"></label>
+        </div>
+
+        <div class="auth-actions">
+            <p>
+                Don't have an account?<br />
+                <a asp-action="Register">Sign Up now</a>
+            </p>
+            <button type="submit" class="main-button">LOGIN</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

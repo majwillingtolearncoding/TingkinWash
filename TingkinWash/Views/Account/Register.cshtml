@@ -1,0 +1,49 @@
+﻿@model TingkinWash.ViewModels.RegisterViewModel
+@{
+    ViewData["Title"] = "Create Account";
+}
+
+<div class="auth-card register-card">
+    <div class="small-brand">TingkinWash</div>
+    <h1>CREATE ACCOUNT</h1>
+
+    <form asp-action="Register" asp-controller="Account" method="post">
+        <div asp-validation-summary="ModelOnly" class="validation-message"></div>
+
+        <div class="form-group">
+            <label asp-for="Username"></label>
+            <input asp-for="Username" class="form-control pill-input" autocomplete="username" />
+            <span asp-validation-for="Username" class="validation-message"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Password"></label>
+            <input asp-for="Password" class="form-control pill-input" autocomplete="new-password" />
+            <span asp-validation-for="Password" class="validation-message"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="FullName"></label>
+            <input asp-for="FullName" class="form-control pill-input" />
+            <span asp-validation-for="FullName" class="validation-message"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="PhoneNumber"></label>
+            <input asp-for="PhoneNumber" class="form-control pill-input" autocomplete="tel" />
+            <span asp-validation-for="PhoneNumber" class="validation-message"></span>
+        </div>
+
+        <div class="auth-actions">
+            <p>
+                Already have an account?<br />
+                <a asp-action="Login">Log-in now!</a>
+            </p>
+            <button type="submit" class="main-button">SIGN UP</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
