@@ -5,8 +5,9 @@ using TingkinWash.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// MVC
+// MVC and Razor Pages
 builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
 
 // Database connection
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -22,7 +23,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
     options.Password.RequireLowercase = true;
     options.Password.RequireNonAlphanumeric = false;
 
-    options.User.RequireUniqueEmail = false;
+    options.User.RequireUniqueEmail = true;
 })
 .AddEntityFrameworkStores<ApplicationDbContext>()
 .AddDefaultTokenProviders();
@@ -50,9 +51,12 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Default page
+// Razor Pages
+app.MapRazorPages();
+
+// Existing MVC routes
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Account}/{action=Login}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

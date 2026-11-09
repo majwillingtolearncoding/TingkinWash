@@ -1,0 +1,254 @@
+﻿@page "/Account/Register"
+@model TingkinWash.Areas.Identity.Pages.Account.RegisterModel
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Create Account | TingkinWash";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>@ViewData["Title"]</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/auth.css" asp-append-version="true" />
+</head>
+
+<body>
+
+    <div class="auth-page">
+
+        <section class="auth-brand-panel">
+
+            <a asp-controller="Home" asp-action="Index" class="brand-logo">
+                <span class="brand-icon">✦</span>
+                TingkinWash
+            </a>
+
+            <div class="brand-content">
+                <span class="eyebrow">A FRESHER WAY TO DO LAUNDRY</span>
+
+                <h1>Join<br />TingkinWash!</h1>
+
+                <p>
+                    Create an account and enjoy convenient
+                    laundry services with TingkinWash.
+                </p>
+
+                <div class="laundry-art" aria-hidden="true">
+                    <div class="bubble bubble-one"></div>
+                    <div class="bubble bubble-two"></div>
+                    <div class="bubble bubble-three"></div>
+
+                    <div class="washer">
+                        <div class="washer-top">
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="washer-door">
+                            <div class="washer-water"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="brand-footer">
+                Clean clothes. Convenient living.
+            </div>
+
+        </section>
+
+        <main class="auth-form-panel register-panel">
+
+            <div class="mobile-brand">
+                <a asp-controller="Home" asp-action="Index" class="brand-logo">
+                    <span class="brand-icon">✦</span>
+                    TingkinWash
+                </a>
+            </div>
+
+            <div class="auth-card register-auth-card">
+
+                <a asp-controller="Home" asp-action="Index" class="back-home">
+                    ← Back to Home
+                </a>
+
+                <div class="form-heading">
+                    <span class="form-label">GET STARTED TODAY</span>
+                    <h2>Create Your Account</h2>
+                    <p>Register to get started with TingkinWash.</p>
+                </div>
+
+                <form method="post">
+
+                    <div asp-validation-summary="ModelOnly"
+                         class="auth-validation">
+                    </div>
+
+                    <div class="name-fields">
+
+                        <div class="form-field">
+                            <label asp-for="Input.FirstName">First Name</label>
+
+                            <div class="input-wrap">
+                                <input asp-for="Input.FirstName"
+                                       placeholder="First name"
+                                       autocomplete="given-name" />
+                            </div>
+
+                            <span asp-validation-for="Input.FirstName"
+                                  class="field-error">
+                            </span>
+                        </div>
+
+                        <div class="form-field">
+                            <label asp-for="Input.LastName">Last Name</label>
+
+                            <div class="input-wrap">
+                                <input asp-for="Input.LastName"
+                                       placeholder="Last name"
+                                       autocomplete="family-name" />
+                            </div>
+
+                            <span asp-validation-for="Input.LastName"
+                                  class="field-error">
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="form-field">
+                        <label asp-for="Input.Email">Email Address</label>
+
+                        <div class="input-wrap">
+                            <span class="input-icon">✉</span>
+
+                            <input asp-for="Input.Email"
+                                   type="email"
+                                   placeholder="Enter your email"
+                                   autocomplete="email" />
+                        </div>
+
+                        <span asp-validation-for="Input.Email"
+                              class="field-error">
+                        </span>
+                    </div>
+
+                    <div class="form-field">
+                        <label asp-for="Input.PhoneNumber">Phone Number</label>
+
+                        <div class="input-wrap">
+                            <span class="input-icon">☎</span>
+
+                            <input asp-for="Input.PhoneNumber"
+                                   type="tel"
+                                   placeholder="Enter your phone number"
+                                   autocomplete="tel" />
+                        </div>
+
+                        <span asp-validation-for="Input.PhoneNumber"
+                              class="field-error">
+                        </span>
+                    </div>
+
+                    <div class="form-field">
+                        <label asp-for="Input.Password">Password</label>
+
+                        <div class="input-wrap">
+                            <span class="input-icon">♙</span>
+
+                            <input asp-for="Input.Password"
+                                   type="password"
+                                   id="registerPassword"
+                                   placeholder="Create a password"
+                                   autocomplete="new-password" />
+
+                            <button type="button"
+                                    class="password-toggle"
+                                    data-toggle-password="registerPassword">
+                                Show
+                            </button>
+                        </div>
+
+                        <span asp-validation-for="Input.Password"
+                              class="field-error">
+                        </span>
+
+                        <div class="strength-container">
+                            <div class="strength-track">
+                                <div id="strengthBar"></div>
+                            </div>
+                            <span id="strengthText">
+                                Password strength
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label asp-for="Input.ConfirmPassword">
+                            Confirm Password
+                        </label>
+
+                        <div class="input-wrap">
+                            <span class="input-icon">♙</span>
+
+                            <input asp-for="Input.ConfirmPassword"
+                                   type="password"
+                                   id="confirmPassword"
+                                   placeholder="Confirm your password"
+                                   autocomplete="new-password" />
+
+                            <button type="button"
+                                    class="password-toggle"
+                                    data-toggle-password="confirmPassword">
+                                Show
+                            </button>
+                        </div>
+
+                        <span asp-validation-for="Input.ConfirmPassword"
+                              class="field-error">
+                        </span>
+                    </div>
+
+                    <div class="terms-row">
+                        <input asp-for="Input.AcceptTerms" />
+
+                        <label asp-for="Input.AcceptTerms">
+                            I agree to the Terms and Conditions and Privacy Policy.
+                        </label>
+                    </div>
+
+                    <span asp-validation-for="Input.AcceptTerms"
+                          class="field-error">
+                    </span>
+
+                    <button type="submit" class="auth-button">
+                        <span class="button-text">CREATE ACCOUNT</span>
+                        <span class="button-loader"></span>
+                    </button>
+
+                </form>
+
+                <div class="auth-switch">
+                    Already have an account?
+                    <a href="/Account/Login">Sign In</a>
+                </div>
+
+                <div class="secure-note">
+                    <span>🔒</span> Your personal information is protected.
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="~/js/auth.js" asp-append-version="true"></script>
+
+</body>
+</html>

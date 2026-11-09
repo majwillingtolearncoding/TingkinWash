@@ -1,126 +1,308 @@
-body {
+* {
     margin: 0;
-    min-height: 100vh;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
     font-family: Arial, sans-serif;
-    background-image: url('/images/stock-photo-laundry-shop-interior-with-counter-and-washing-machines-d-rendering-2058622775.jpg'); 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    color: #18304f;
+    background: #ffffff;
 }
 
-.page-shell {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 30px 20px;
+/* NAVIGATION */
+
+.custom-navbar {
+    background: #ffffff;
+    padding: 18px 0;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.06);
 }
 
-.auth-card {
-    width: 100%;
-    max-width: 570px;
-    margin: 0 auto;
-    padding: 40px;
-    border-radius: 30px;
-    background: #20d4d0;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-}
-
-    .auth-card h1 {
-        text-align: center;
-        font-weight: bold;
-        margin-bottom: 30px;
-    }
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-    .form-group label {
-        display: block;
-        margin-bottom: 8px;
-        font-size: 18px;
-    }
-
-.pill-input {
-    height: 55px;
-    border-radius: 30px;
-    padding: 12px 20px;
-}
-
-.auth-actions {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-    margin-top: 25px;
-}
-
-.main-button {
-    background: white;
-    color: #14234f;
-    border: none;
-    border-radius: 30px;
-    padding: 14px 30px;
+.navbar-brand {
+    font-size: 27px;
     font-weight: bold;
-    cursor: pointer;
+    color: #18304f;
 }
 
-    .main-button:hover {
-        background: #14234f;
+.brand-blue {
+    color: #168db5;
+}
+
+.nav-link {
+    margin: 0 10px;
+    font-weight: 600;
+}
+
+    .nav-link:hover {
+        color: #168db5;
+    }
+
+.signup-button {
+    display: inline-block;
+    background: #168db5;
+    color: white;
+    padding: 10px 22px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+    .signup-button:hover {
+        background: #116b8b;
         color: white;
     }
 
-.dashboard-card {
-    width: 100%;
-    max-width: 900px;
-    padding: 40px;
-    background: #20d4d0;
-    border-radius: 30px;
+/* HERO */
+
+.hero-section {
+    min-height: 570px;
+    display: flex;
+    align-items: center;
+    padding: 70px 10%;
+    background: linear-gradient(120deg, #e7f7fc, #c5eaf5);
 }
 
-.dashboard-links {
+.hero-content {
+    max-width: 650px;
+}
+
+.hero-label,
+.section-heading span,
+.about-content span {
+    color: #168db5;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.hero-content h1 {
+    font-size: 58px;
+    font-weight: 800;
+    margin: 20px 0;
+    color: #18304f;
+}
+
+.hero-content p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.btn-primary-custom,
+.btn-outline-custom {
+    display: inline-block;
+    padding: 14px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn-primary-custom {
+    background: #168db5;
+    color: white;
+}
+
+    .btn-primary-custom:hover {
+        background: #116b8b;
+        color: white;
+    }
+
+.btn-outline-custom {
+    border: 2px solid #168db5;
+    color: #168db5;
+}
+
+/* GENERAL SECTIONS */
+
+.section-container {
+    padding: 80px 8%;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+    .section-heading h2 {
+        font-size: 36px;
+        font-weight: bold;
+        margin: 12px 0;
+    }
+
+/* SERVICES */
+
+.service-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin: 25px 0;
+    gap: 25px;
 }
 
-.dashboard-item {
+.service-card {
+    padding: 30px;
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.07);
+    transition: 0.3s;
+}
+
+    .service-card:hover {
+        transform: translateY(-8px);
+    }
+
+.service-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.service-card h3 {
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.service-card p {
+    color: #68788a;
+    line-height: 1.6;
+}
+
+.service-card a {
+    color: #168db5;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* WHY CHOOSE US */
+
+.why-section {
+    padding: 80px 8%;
+    background: #edf8fc;
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.why-card {
+    padding: 25px;
     background: white;
-    padding: 20px;
     border-radius: 15px;
 }
 
-@media (max-width: 700px) {
-    .page-shell {
-        justify-content: center;
-        padding: 20px;
+    .why-card h3 {
+        font-size: 19px;
     }
 
-    .auth-actions {
-        flex-direction: column;
-        align-items: stretch;
+    .why-card p {
+        color: #68788a;
     }
 
-    .dashboard-links {
+/* HOW IT WORKS */
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.step-card {
+    text-align: center;
+    padding: 30px;
+    border: 1px solid #e1eaf0;
+    border-radius: 18px;
+}
+
+    .step-card span {
+        color: #168db5;
+        font-size: 35px;
+        font-weight: bold;
+    }
+
+/* ABOUT */
+
+.about-section {
+    padding: 90px 10%;
+    background: #eaf7fb;
+}
+
+.about-content {
+    max-width: 750px;
+    margin: auto;
+    text-align: center;
+}
+
+    .about-content h2 {
+        font-size: 38px;
+        font-weight: bold;
+        margin: 15px 0;
+    }
+
+    .about-content p {
+        color: #68788a;
+        line-height: 1.8;
+    }
+
+/* CONTACT */
+
+.contact-section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+/* FOOTER */
+
+.footer {
+    padding: 40px 20px;
+    background: #18304f;
+    color: white;
+    text-align: center;
+}
+
+    .footer h3 {
+        font-weight: bold;
+    }
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 900px) {
+    .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-content h1 {
+        font-size: 45px;
+    }
+}
+
+@media (max-width: 600px) {
+    .service-grid,
+    .why-grid,
+    .steps-grid {
         grid-template-columns: 1fr;
     }
-}
 
-.logo-container {
-    text-align: center;
-    margin-bottom: 20px;
-}
+    .hero-content h1 {
+        font-size: 38px;
+    }
 
-.logo {
-    width: 150px;
-    height: auto;
-    object-fit: contain;
-}
+    .hero-section {
+        padding: 60px 25px;
+    }
 
-.register-card {
-    max-width: 570px;
-    margin: 0 auto;
+    .section-container {
+        padding: 55px 20px;
+    }
 }

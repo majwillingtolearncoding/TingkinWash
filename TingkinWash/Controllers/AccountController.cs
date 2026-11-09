@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 using TingkinWash.Models;
 using TingkinWash.ViewModels;
 
@@ -18,79 +19,96 @@ namespace TingkinWash.Controllers
             _signInManager = signInManager;
         }
 
+        // LOGIN PAGE
         [HttpGet]
+        [AllowAnonymous]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        // LOGIN PROCESS
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(LoginViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var result = await _signInManager.PasswordSignInAsync(
+                model.Username,
+                model.Password,
+                model.RememberMe,
+                lockoutOnFailure: false
+            );
+
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index", "Dashboard");
+            }
+
+            ModelState.AddModelError("", "Invalid username or password.");
+
+            return View(model);
+        }
+
+        // REGISTER PAGE
+        [HttpGet]
+        [AllowAnonymous]
         public IActionResult Register()
         {
             return View();
         }
 
+        // REGISTER PROCESS
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (!ModelState.IsValid)
+            {
                 return View(model);
+            }
 
             var user = new ApplicationUser
             {
-                UserName = model.Username.Trim(),
-                FullName = model.FullName.Trim(),
-                PhoneNumber = model.PhoneNumber.Trim()
+                UserName = model.Username,
+                FullName = model.FullName,
+                PhoneNumber = model.PhoneNumber
             };
 
-            var result = await _userManager.CreateAsync(user, model.Password);
+            var result = await _userManager.CreateAsync(
+                user,
+                model.Password
+            );
 
             if (result.Succeeded)
             {
                 await _signInManager.SignInAsync(user, isPersistent: false);
+
                 return RedirectToAction("Index", "Dashboard");
             }
 
             foreach (var error in result.Errors)
-                ModelState.AddModelError(string.Empty, error.Description);
-
-            return View(model);
-        }
-
-        [HttpGet]
-        public IActionResult Login(string? returnUrl = null)
-        {
-            ViewData["ReturnUrl"] = returnUrl;
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginViewModel model, string? returnUrl = null)
-        {
-            ViewData["ReturnUrl"] = returnUrl;
-
-            if (!ModelState.IsValid)
-                return View(model);
-
-            var result = await _signInManager.PasswordSignInAsync(
-                model.Username.Trim(),
-                model.Password,
-                model.RememberMe,
-                lockoutOnFailure: false);
-
-            if (result.Succeeded)
             {
-                if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
-                    return Redirect(returnUrl);
-
-                return RedirectToAction("Index", "Dashboard");
+                ModelState.AddModelError("", error.Description);
             }
 
-            ModelState.AddModelError(string.Empty, "Incorrect username or password.");
             return View(model);
         }
 
+        // LOGOUT PROCESS
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
+
             return RedirectToAction("Login", "Account");
         }
     }

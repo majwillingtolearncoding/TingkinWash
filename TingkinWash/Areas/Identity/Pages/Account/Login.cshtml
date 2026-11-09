@@ -1,0 +1,168 @@
+﻿@page "/Account/Login"
+@model TingkinWash.Areas.Identity.Pages.Account.LoginModel
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Sign In | TingkinWash";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>@ViewData["Title"]</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/auth.css" asp-append-version="true" />
+</head>
+
+<body>
+
+    <div class="auth-page">
+
+        <section class="auth-brand-panel">
+
+            <a asp-controller="Home" asp-action="Index" class="brand-logo">
+                <span class="brand-icon">✦</span>
+                TingkinWash
+            </a>
+
+            <div class="brand-content">
+                <span class="eyebrow">YOUR LAUNDRY, MADE EASIER</span>
+
+                <h1>Welcome<br />Back!</h1>
+
+                <p>
+                    Fresh clothes, fresh start.
+                    Let's get you back to your account.
+                </p>
+
+                <div class="laundry-art" aria-hidden="true">
+                    <div class="bubble bubble-one"></div>
+                    <div class="bubble bubble-two"></div>
+                    <div class="bubble bubble-three"></div>
+
+                    <div class="washer">
+                        <div class="washer-top">
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="washer-door">
+                            <div class="washer-water"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="brand-footer">
+                Clean clothes. Convenient living.
+            </div>
+
+        </section>
+
+        <main class="auth-form-panel">
+
+            <div class="mobile-brand">
+                <a asp-controller="Home" asp-action="Index" class="brand-logo">
+                    <span class="brand-icon">✦</span>
+                    TingkinWash
+                </a>
+            </div>
+
+            <div class="auth-card">
+
+                <a asp-controller="Home" asp-action="Index" class="back-home">
+                    ← Back to Home
+                </a>
+
+                <div class="form-heading">
+                    <span class="form-label">WELCOME BACK</span>
+                    <h2>Sign In</h2>
+                    <p>Welcome back to TingkinWash!</p>
+                </div>
+
+                <form method="post">
+
+                    <div asp-validation-summary="ModelOnly"
+                         class="auth-validation">
+                    </div>
+
+                    <div class="form-field">
+                        <label asp-for="Input.Email">Email Address</label>
+
+                        <div class="input-wrap">
+                            <span class="input-icon">✉</span>
+                            <input asp-for="Input.Email"
+                                   type="email"
+                                   placeholder="Enter your email"
+                                   autocomplete="email" />
+                        </div>
+
+                        <span asp-validation-for="Input.Email"
+                              class="field-error">
+                        </span>
+                    </div>
+
+                    <div class="form-field">
+                        <label asp-for="Input.Password">Password</label>
+
+                        <div class="input-wrap">
+                            <span class="input-icon">♙</span>
+
+                            <input asp-for="Input.Password"
+                                   type="password"
+                                   placeholder="Enter your password"
+                                   autocomplete="current-password"
+                                   id="loginPassword" />
+
+                            <button type="button"
+                                    class="password-toggle"
+                                    data-toggle-password="loginPassword">
+                                Show
+                            </button>
+                        </div>
+
+                        <span asp-validation-for="Input.Password"
+                              class="field-error">
+                        </span>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="check-label">
+                            <input asp-for="Input.RememberMe" />
+                            <span>Remember me</span>
+                        </label>
+
+                        <span class="forgot-note">
+                            Forgot password?
+                        </span>
+                    </div>
+
+                    <button type="submit" class="auth-button">
+                        <span class="button-text">LOGIN</span>
+                        <span class="button-loader"></span>
+                    </button>
+
+                </form>
+
+                <div class="auth-switch">
+                    Don't have an account?
+                    <a href="/Account/Register">Sign Up</a>
+                </div>
+
+                <div class="secure-note">
+                    <span>🔒</span> Your account information is protected.
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="~/js/auth.js" asp-append-version="true"></script>
+
+</body>
+</html>
