@@ -1,3 +1,4 @@
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Identity;
@@ -77,13 +78,34 @@ namespace TingkinWash.Areas.Identity.Pages.Account
 
             var result = await _userManager.CreateAsync(
                 user,
-                Input.Password);
+                Input.Password
+            );
 
             if (result.Succeeded)
             {
+                // ASSIGN CUSTOMER ROLE
+                var roleResult = await _userManager.AddToRoleAsync(
+                    user,
+                    "Customer"
+                );
+
+                if (!roleResult.Succeeded)
+                {
+                    await _userManager.DeleteAsync(user);
+
+                    foreach (var error in roleResult.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+
+                    return Page();
+                }
+
+                // SIGN IN CUSTOMER
                 await _signInManager.SignInAsync(
                     user,
-                    isPersistent: false);
+                    isPersistent: false
+                );
 
                 return RedirectToAction("Index", "Dashboard");
             }

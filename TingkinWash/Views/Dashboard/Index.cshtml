@@ -1,40 +1,63 @@
-﻿@{
+﻿@model TingkinWash.ViewModels.UserDashboardViewModel
+
+@{
     ViewData["Title"] = "Dashboard";
+    Layout = "_DashboardLayout";
 }
 
-<div class="dashboard-card">
+<!-- WELCOME SECTION -->
+<div class="dashboard-welcome">
+    <h1>Welcome, @Model.FullName!</h1>
+    <p>Manage your laundry bookings and account here.</p>
+</div>
 
-    <h1>Welcome to TingkinWash!</h1>
+<!-- STATISTICS -->
+<div class="dashboard-stats">
 
-    <p>Your laundry service dashboard.</p>
-
-    <div class="dashboard-links">
-
-        <div class="dashboard-item">
-            <h3>My Bookings</h3>
-            <p>View your laundry bookings.</p>
-        </div>
-
-        <div class="dashboard-item">
-            <h3>Laundry Services</h3>
-            <p>Explore our available services.</p>
-        </div>
-
-        <div class="dashboard-item">
-            <h3>My Profile</h3>
-            <p>Manage your account details.</p>
-        </div>
-
+    <div class="stat-card">
+        <h3>Total Bookings</h3>
+        <h2>@Model.TotalBookings</h2>
     </div>
 
-    <form asp-controller="Account"
-          asp-action="Logout"
-          method="post">
+    <div class="stat-card">
+        <h3>Pending Bookings</h3>
+        <h2>@Model.PendingBookings</h2>
+    </div>
 
-        <button type="submit" class="main-button">
-            LOG OUT
-        </button>
+    <div class="stat-card">
+        <h3>Completed Bookings</h3>
+        <h2>@Model.CompletedBookings</h2>
+    </div>
 
-    </form>
+</div>
 
+<!-- MY BOOKINGS -->
+<div class="dashboard-section">
+    <h2>My Bookings</h2>
+    <p>View and monitor your laundry booking requests.</p>
+    <span class="text-muted">No booking records available yet.</span>
+</div>
+
+<!-- LAUNDRY SERVICES -->
+<div class="dashboard-section">
+    <h2>Laundry Services</h2>
+    <p>Explore our available laundry services.</p>
+    <span class="text-muted">Laundry services will be displayed here.</span>
+</div>
+
+<!-- MY PROFILE -->
+<div class="dashboard-section">
+    <h2>My Profile</h2>
+
+    <p class="profile-info">
+        <strong>Full Name:</strong> @Model.FullName
+    </p>
+
+    <p class="profile-info">
+        <strong>Username:</strong> @Model.Username
+    </p>
+
+    <p class="profile-info">
+        <strong>Phone Number:</strong> @Model.PhoneNumber
+    </p>
 </div>

@@ -1,0 +1,78 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - TingkinWash Admin</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/admin.css" />
+</head>
+
+<body>
+
+    <div class="admin-container">
+
+        <!-- SIDEBAR -->
+        <aside class="admin-sidebar">
+
+            <div class="admin-brand">
+                <h2>TingkinWash</h2>
+                <p>ADMIN PANEL</p>
+            </div>
+
+            <nav class="admin-menu">
+
+                <a asp-controller="AdminDashboard"
+                   asp-action="Index"
+                   class="active">
+                    Dashboard
+                </a>
+
+                <a href="#">
+                    Customers
+                </a>
+
+                <a href="#">
+                    Bookings
+                </a>
+
+                <a href="#">
+                    Laundry Services
+                </a>
+
+                <a href="#">
+                    Sales & Reports
+                </a>
+
+            </nav>
+
+            <div class="admin-logout">
+                <form asp-controller="Account"
+                      asp-action="Logout"
+                      method="post">
+
+                    @Html.AntiForgeryToken()
+
+                    <button type="submit">Log Out</button>
+                </form>
+            </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="admin-main">
+            @RenderBody()
+        </main>
+
+    </div>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

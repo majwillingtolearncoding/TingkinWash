@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using TingkinWash.Models;
 using TingkinWash.ViewModels;
 
+
 namespace TingkinWash.Controllers
 {
     public class AccountController : Controller
@@ -25,7 +26,10 @@ namespace TingkinWash.Controllers
         public IActionResult Login()
         {
             return View();
+
+
         }
+
 
         // LOGIN PROCESS
         [HttpPost]
@@ -47,13 +51,30 @@ namespace TingkinWash.Controllers
 
             if (result.Succeeded)
             {
-                return RedirectToAction("Index", "Dashboard");
+                var user = await _userManager.FindByEmailAsync(model.Username);
+
+                if (user == null)
+                {
+                    user = await _userManager.FindByNameAsync(model.Username);
+                }
+
+                if (user == null)
+                {
+                    return Content("LOGIN SUCCESSFUL, BUT USER WAS NOT FOUND.");
+                }
+
+                var roles = await _userManager.GetRolesAsync(user);
+
+                return Content(
+                    "LOGIN SUCCESSFUL\n" +
+                    "EMAIL: " + user.Email + "\n" +
+                    "ROLES: " + string.Join(", ", roles)
+                );
             }
 
-            ModelState.AddModelError("", "Invalid username or password.");
-
-            return View(model);
+            return Content("LOGIN FAILED. CHECK YOUR CREDENTIALS.");
         }
+
 
         // REGISTER PAGE
         [HttpGet]
@@ -64,6 +85,7 @@ namespace TingkinWash.Controllers
         }
 
         // REGISTER PROCESS
+
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -88,9 +110,23 @@ namespace TingkinWash.Controllers
 
             if (result.Succeeded)
             {
-                await _signInManager.SignInAsync(user, isPersistent: false);
+                var roleResult = await _userManager.AddToRoleAsync(user, "Customer");
 
-                return RedirectToAction("Index", "Dashboard");
+                if (roleResult.Succeeded)
+                {
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+
+                    return RedirectToAction("Index", "Dashboard");
+                }
+
+                await _userManager.DeleteAsync(user);
+
+                foreach (var error in roleResult.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+
+                return View(model);
             }
 
             foreach (var error in result.Errors)
@@ -101,6 +137,7 @@ namespace TingkinWash.Controllers
             return View(model);
         }
 
+
         // LOGOUT PROCESS
         [HttpPost]
         [Authorize]
@@ -110,6 +147,10 @@ namespace TingkinWash.Controllers
             await _signInManager.SignOutAsync();
 
             return RedirectToAction("Login", "Account");
+
+
+
+
         }
     }
 }

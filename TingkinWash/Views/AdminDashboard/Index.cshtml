@@ -1,0 +1,82 @@
+﻿@model TingkinWash.ViewModels.AdminDashboardViewModel
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+    Layout = "_AdminLayout";
+}
+
+<!-- HEADER -->
+<div class="admin-header">
+    <div>
+        <h1>Dashboard Overview</h1>
+        <p>Welcome to TingkinWash Admin Panel.</p>
+    </div>
+
+    <div>
+        <strong>Administrator</strong>
+    </div>
+</div>
+
+<!-- STATISTICS -->
+<div class="admin-stats">
+
+    <div class="admin-stat-card">
+        <h3>Total Customers</h3>
+        <h2>@Model.TotalCustomers</h2>
+    </div>
+
+    <div class="admin-stat-card">
+        <h3>Total Bookings</h3>
+        <h2>@Model.TotalBookings</h2>
+    </div>
+
+    <div class="admin-stat-card">
+        <h3>Pending Bookings</h3>
+        <h2>@Model.PendingBookings</h2>
+    </div>
+
+    <div class="admin-stat-card">
+        <h3>Completed Bookings</h3>
+        <h2>@Model.CompletedBookings</h2>
+    </div>
+
+    <div class="admin-stat-card sales">
+        <h3>Total Sales</h3>
+        <h2>₱@Model.TotalSales.ToString("N2")</h2>
+    </div>
+
+</div>
+
+<!-- RECENT BOOKING ACTIVITIES -->
+<div class="admin-activities">
+
+    <h2>Recent Booking Activities</h2>
+
+    <div class="table-responsive">
+
+        <table class="admin-table">
+
+            <thead>
+                <tr>
+                    <th>Booking ID</th>
+                    <th>Customer</th>
+                    <th>Service</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td colspan="6" class="text-center">
+                        No booking activities available yet.
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>

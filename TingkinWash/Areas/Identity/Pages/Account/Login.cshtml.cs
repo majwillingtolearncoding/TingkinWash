@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
@@ -9,10 +10,14 @@ namespace TingkinWash.Areas.Identity.Pages.Account
     public class LoginModel : PageModel
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public LoginModel(SignInManager<ApplicationUser> signInManager)
+        public LoginModel(
+            SignInManager<ApplicationUser> signInManager,
+            UserManager<ApplicationUser> userManager)
         {
             _signInManager = signInManager;
+            _userManager = userManager;
         }
 
         [BindProperty]
@@ -40,14 +45,51 @@ namespace TingkinWash.Areas.Identity.Pages.Account
             if (!ModelState.IsValid)
                 return Page();
 
+            var user = await _userManager.FindByEmailAsync(Input.Email);
+
+            if (user == null)
+            {
+                ModelState.AddModelError("",
+                    "The email address or password is incorrect.");
+                return Page();
+            }
+
             var result = await _signInManager.PasswordSignInAsync(
-                Input.Email,
+                user.UserName!,
                 Input.Password,
                 Input.RememberMe,
-                lockoutOnFailure: false);
+                lockoutOnFailure: false
+            );
 
             if (result.Succeeded)
-                return RedirectToAction("Index", "Dashboard");
+            {
+                var roles = await _userManager.GetRolesAsync(user);
+
+                // ADMIN DASHBOARD
+                if (roles.Contains("Admin"))
+                {
+                    return RedirectToAction(
+                        "Index",
+                        "AdminDashboard"
+                    );
+                }
+
+                // CUSTOMER DASHBOARD
+                if (roles.Contains("Customer"))
+                {
+                    return RedirectToAction(
+                        "Index",
+                        "Dashboard"
+                    );
+                }
+
+                await _signInManager.SignOutAsync();
+
+                ModelState.AddModelError("",
+                    "Your account has no assigned role.");
+
+                return Page();
+            }
 
             if (result.IsLockedOut)
             {

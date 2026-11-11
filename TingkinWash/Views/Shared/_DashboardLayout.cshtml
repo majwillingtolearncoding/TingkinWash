@@ -1,0 +1,81 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - TingkinWash</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/dashboard.css" />
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- SIDEBAR -->
+        <aside class="dashboard-sidebar">
+
+            <div class="sidebar-brand">
+                <h2>TingkinWash</h2>
+                <p>Laundry Service</p>
+            </div>
+
+            <nav class="sidebar-menu">
+
+                <a asp-controller="Dashboard"
+                   asp-action="Index"
+                   class="active">
+                    Dashboard
+                </a>
+
+                <a href="#">
+                    My Bookings
+                </a>
+
+                <a href="#">
+                    Laundry Services
+                </a>
+
+                <a href="#">
+                    My Profile
+                </a>
+
+            </nav>
+
+            <div class="sidebar-logout">
+
+                <form asp-controller="Account"
+                      asp-action="Logout"
+                      method="post">
+
+                    @Html.AntiForgeryToken()
+
+                    <button type="submit">
+                        Log Out
+                    </button>
+
+                </form>
+
+            </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="dashboard-main">
+
+            @RenderBody()
+
+        </main>
+
+    </div>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>
