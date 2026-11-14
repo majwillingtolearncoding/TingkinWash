@@ -1,0 +1,362 @@
+﻿
+/* MAIN DASHBOARD */
+.dashboard-main {
+    background: #f3f7fb;
+}
+
+/* WELCOME */
+.improved-welcome {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding: 32px;
+    border-radius: 22px;
+    background: linear-gradient(110deg, #e8f5ff, #ffffff 65%);
+    border: 1px solid #deebf7;
+}
+
+.welcome-eyebrow,
+.tw-kicker {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.6px;
+    color: #1174bc;
+}
+
+.improved-welcome h1 {
+    margin: 10px 0 7px;
+    font-size: clamp(24px, 3vw, 34px);
+}
+
+.improved-welcome p {
+    margin: 0;
+}
+
+.tw-primary-btn {
+    display: inline-block;
+    background: #1267b1;
+    color: white;
+    padding: 13px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+    .tw-primary-btn:hover {
+        background: #0e4d86;
+        color: white;
+    }
+
+/* STATISTICS */
+.improved-stats {
+    margin-top: 25px;
+}
+
+    .improved-stats .stat-card {
+        position: relative;
+        border: 1px solid #e3ebf3;
+        border-left: 4px solid #1267b1;
+        border-radius: 18px;
+        padding: 25px;
+    }
+
+        .improved-stats .stat-card h3 {
+            margin: 0 0 12px;
+        }
+
+        .improved-stats .stat-card h2 {
+            margin: 0;
+        }
+
+        .improved-stats .stat-card small {
+            color: #718096;
+        }
+
+.stat-symbol {
+    position: absolute;
+    top: 20px;
+    right: 22px;
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
+    background: #eaf4ff;
+    color: #1267b1;
+    font-size: 22px;
+}
+
+/* SECTIONS */
+.tw-panel {
+    border: 1px solid #e3ebf3;
+    border-radius: 20px;
+    padding: 28px;
+    scroll-margin-top: 20px;
+}
+
+.tw-section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+    .tw-section-head h2 {
+        margin: 7px 0;
+    }
+
+    .tw-section-head p {
+        margin: 0;
+    }
+
+.tw-tag {
+    background: #eef6ff;
+    color: #1267b1;
+    border-radius: 30px;
+    padding: 9px 12px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* BOOKING STATUS */
+.tw-step-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+    .tw-step-list span {
+        padding: 8px 12px;
+        border-radius: 20px;
+        background: #eef5fb;
+        color: #355b77;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+/* EMPTY BOOKINGS */
+.tw-empty {
+    text-align: center;
+    padding: 30px 16px;
+    border: 1px dashed #b9cfe2;
+    border-radius: 16px;
+    background: #f8fbfe;
+}
+
+.tw-empty-icon {
+    color: #1267b1;
+    font-size: 38px;
+}
+
+.tw-empty h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #123653;
+    margin: 6px 0;
+}
+
+.tw-empty p {
+    max-width: 560px;
+    margin: 0 auto;
+}
+
+/* BOOKING FEATURES */
+.tw-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+}
+
+    .tw-feature-grid > div {
+        background: #f7fafd;
+        padding: 17px;
+        border-radius: 12px;
+    }
+
+    .tw-feature-grid strong {
+        color: #123653;
+    }
+
+    .tw-feature-grid p {
+        font-size: 13px;
+        margin: 8px 0 0;
+    }
+
+/* LAUNDRY SERVICES */
+.tw-service-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.tw-service {
+    border: 1px solid #e2ebf4;
+    padding: 22px;
+    border-radius: 16px;
+    background: #fbfdff;
+    transition: 0.2s;
+}
+
+    .tw-service:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(18, 54, 83, 0.1);
+    }
+
+.tw-service-icon {
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: #e5f3ff;
+    color: #1267b1;
+    font-size: 27px;
+    margin-bottom: 15px;
+}
+
+.tw-service h3 {
+    color: #123653;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.tw-service p {
+    min-height: 44px;
+}
+
+.tw-service span {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: #1267b1;
+    margin-top: 14px;
+}
+
+/* MY PROFILE */
+.tw-profile-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 22px;
+    padding: 20px;
+    border-radius: 14px;
+    background: #f3f8fd;
+}
+
+.tw-avatar {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #1267b1;
+    color: white;
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.tw-profile-card h3 {
+    margin: 0;
+    color: #123653;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.tw-profile-card p {
+    margin: 4px 0 0;
+}
+
+.tw-profile-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+    .tw-profile-grid > div {
+        padding: 17px;
+        border: 1px solid #e5ecf4;
+        border-radius: 12px;
+        overflow-wrap: anywhere;
+    }
+
+    .tw-profile-grid small {
+        display: block;
+        color: #718096;
+        margin-bottom: 6px;
+    }
+
+    .tw-profile-grid strong {
+        color: #123653;
+    }
+
+.tw-note {
+    margin: 18px 0 0;
+    font-size: 13px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .improved-welcome {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .tw-feature-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .improved-welcome,
+    .tw-panel {
+        padding: 20px;
+    }
+
+    .tw-section-head {
+        flex-direction: column;
+    }
+
+    .tw-service-grid,
+    .tw-profile-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* SMOOTH SCROLLING */
+html {
+    scroll-behavior: smooth;
+}
+
+/* SECTION POSITION */
+#bookings,
+#services,
+#profile {
+    scroll-margin-top: 25px;
+}
+
+/* SIDEBAR ACTIVE MENU */
+.sidebar-menu a {
+    display: block;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 13px 15px;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+    .sidebar-menu a:hover {
+        background: #1c78c5;
+        color: white;
+    }
+
+    .sidebar-menu a.active {
+        background: #1267b1;
+        color: white;
+        font-weight: 600;
+    }

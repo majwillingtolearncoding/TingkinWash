@@ -1,0 +1,232 @@
+﻿@{
+    ViewData["Title"] = "Laundry Services";
+    Layout = "_DashboardLayout";
+}
+
+<link rel="stylesheet"
+      href="/css/services.css"
+      asp-append-version="true" />
+
+<div class="services-page">
+
+    <!-- HERO SECTION -->
+    <section class="services-hero">
+
+        <img src="/images/services/cover.jpg"
+             alt="TingkinWash Laundry Service"
+             class="hero-photo" />
+
+        <div class="hero-text">
+
+            <span>TINGKINWASH LAUNDRY SERVICE</span>
+
+            <h1>Our Laundry Services</h1>
+
+            <p>
+                Fresh clothes, less hassle.
+                Explore our quality laundry services
+                made for your everyday needs.
+            </p>
+
+            <a asp-controller="Bookings"
+               asp-action="Index"
+               class="hero-btn">
+                View My Bookings
+            </a>
+
+        </div>
+
+    </section>
+
+        
+
+    <!-- HERO SECTION -->
+    <!-- SERVICES TITLE -->
+    <div class="services-title">
+
+        <div>
+            <h2>Choose Your Service</h2>
+            <p>Find the laundry care that suits you.</p>
+        </div>
+
+        <span class="services-count">
+            4 Available Services
+        </span>
+
+    </div>
+
+    
+
+    <!-- SERVICES GRID -->
+    <div class="services-grid">
+
+        <!-- WASH & FOLD -->
+        <div class="laundry-card">
+
+            <div class="laundry-image">
+                <img src="/images/services/wash-fold.jpg"
+                     alt="Colorful folded laundry"
+                     loading="lazy" />
+
+                <span class="service-tag">
+                    Everyday Care
+                </span>
+            </div>
+
+            <div class="laundry-content">
+
+                <h3>Wash &amp; Fold</h3>
+
+                <p>
+                    We wash and neatly fold your everyday
+                    clothes, making laundry easier and
+                    more convenient.
+                </p>
+
+                <div class="service-price">
+                    <span>Service Rate</span>
+                    <strong>Price set by admin</strong>
+                </div>
+
+                <button class="service-button"
+                        type="button"
+                        disabled>
+                    Book Service
+                </button>
+
+            </div>
+        </div>
+
+        <!-- DRY CLEANING -->
+        <div class="laundry-card">
+
+            <div class="laundry-image">
+                <img src="/images/services/dry-cleaning.jpg"
+                     alt="Clean shirts hanging on a rack"
+                     loading="lazy" />
+
+                <span class="service-tag">
+                    Special Care
+                </span>
+            </div>
+
+            <div class="laundry-content">
+
+                <h3>Dry Cleaning</h3>
+
+                <p>
+                    Professional garment care for delicate
+                    clothes, formal wear, and fabrics
+                    needing special attention.
+                </p>
+
+                <div class="service-price">
+                    <span>Service Rate</span>
+                    <strong>Price set by admin</strong>
+                </div>
+
+                <button class="service-button"
+                        type="button"
+                        disabled>
+                    Book Service
+                </button>
+
+            </div>
+        </div>
+
+        <!-- WASH DRY FOLD -->
+        <div class="laundry-card">
+
+            <div class="laundry-image">
+                <img src="/images/services/wash-dry-fold.jpg"
+                     alt="Modern laundry machines"
+                     loading="lazy" />
+
+                <span class="service-tag">
+                    Complete Care
+                </span>
+            </div>
+
+            <div class="laundry-content">
+
+                <h3>Wash, Dry &amp; Fold</h3>
+
+                <p>
+                    A complete laundry solution that
+                    includes washing, drying, and neatly
+                    folding your clothes.
+                </p>
+
+                <div class="service-price">
+                    <span>Service Rate</span>
+                    <strong>Price set by admin</strong>
+                </div>
+
+                <button class="service-button"
+                        type="button"
+                        disabled>
+                    Book Service
+                </button>
+
+            </div>
+        </div>
+
+        <!-- EXPRESS LAUNDRY -->
+        <div class="laundry-card">
+
+            <div class="laundry-image">
+                <img src="/images/services/express-laundry.png"
+                     alt="TingkinWash laundry team"
+                     loading="lazy" />
+
+                <span class="service-tag">
+                    Priority Service
+                </span>
+            </div>
+
+            <div class="laundry-content">
+
+                <h3>Express Laundry</h3>
+
+                <p>
+                    Priority laundry processing for
+                    customers who need their clothes
+                    cleaned sooner.
+                </p>
+
+                <div class="service-price">
+                    <span>Service Rate</span>
+                    <strong>Price set by admin</strong>
+                </div>
+
+                <button class="service-button"
+                        type="button"
+                        disabled>
+                    Book Service
+                </button>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- BOTTOM SECTION -->
+    <div class="services-bottom">
+
+        <div>
+            <h3>Ready for Fresh Clothes?</h3>
+
+            <p>
+                Let TingkinWash make your
+                laundry experience easier.
+            </p>
+        </div>
+
+        <a asp-controller="Bookings"
+           asp-action="Index">
+            My Bookings
+        </a>
+
+    </div>
+
+</div>

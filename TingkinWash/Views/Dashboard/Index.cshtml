@@ -5,59 +5,325 @@
     Layout = "_DashboardLayout";
 }
 
-<!-- WELCOME SECTION -->
-<div class="dashboard-welcome">
-    <h1>Welcome, @Model.FullName!</h1>
-    <p>Manage your laundry bookings and account here.</p>
-</div>
+<div class="tw-home">
 
-<!-- STATISTICS -->
-<div class="dashboard-stats">
+    <!-- WELCOME BANNER -->
+    <section class="tw-home-hero">
 
-    <div class="stat-card">
-        <h3>Total Bookings</h3>
-        <h2>@Model.TotalBookings</h2>
+        <div class="tw-home-hero-content">
+
+            <span class="tw-hero-label">
+                YOUR LAUNDRY, MADE SIMPLE
+            </span>
+
+            <h1>
+                Welcome back, @Model.FullName!
+            </h1>
+
+            <p>
+                Fresh clothes, less hassle.
+                Explore quality laundry services
+                and manage your bookings with ease.
+            </p>
+
+            <a asp-controller="Services"
+               asp-action="Index"
+               class="tw-hero-button">
+
+                Explore Services
+                <i class="bi bi-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+        <img src="~/images/services/cover.jpg"
+             alt="Modern TingkinWash laundry shop"
+             class="tw-home-hero-image" />
+
+    </section>
+
+
+    <!-- BOOKING STATISTICS -->
+    <section class="tw-home-stats">
+
+        <div class="tw-home-stat-card">
+
+            <div class="tw-stat-heading">
+                <span>Total Bookings</span>
+
+                <div class="tw-stat-icon">
+                    <i class="bi bi-grid-3x3-gap"></i>
+                </div>
+            </div>
+
+            <h2>@Model.TotalBookings</h2>
+
+            <p>All your laundry requests</p>
+
+        </div>
+
+        <div class="tw-home-stat-card">
+
+            <div class="tw-stat-heading">
+                <span>Pending Bookings</span>
+
+                <div class="tw-stat-icon">
+                    <i class="bi bi-clock-history"></i>
+                </div>
+            </div>
+
+            <h2>@Model.PendingBookings</h2>
+
+            <p>Waiting for confirmation</p>
+
+        </div>
+
+        <div class="tw-home-stat-card">
+
+            <div class="tw-stat-heading">
+                <span>Completed Bookings</span>
+
+                <div class="tw-stat-icon">
+                    <i class="bi bi-check-circle"></i>
+                </div>
+            </div>
+
+            <h2>@Model.CompletedBookings</h2>
+
+            <p>Finished laundry orders</p>
+
+        </div>
+
+    </section>
+
+
+    <!-- MAIN DASHBOARD GRID -->
+    <div class="tw-home-grid">
+
+        <!-- LEFT COLUMN -->
+        <div class="tw-home-left">
+
+            <!-- QUICK SERVICE -->
+            <section class="tw-home-panel">
+
+                <div class="tw-panel-heading">
+
+                    <div>
+                        <span class="tw-small-label">
+                            QUICK SERVICE
+                        </span>
+
+                        <h2>Laundry Made Easy</h2>
+
+                        <p>
+                            Choose the right laundry care
+                            for your everyday needs.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="tw-service-promo">
+
+                    <div class="tw-service-promo-text">
+
+                        <h3>
+                            Fresh Clothes,
+                            Fresh Confidence.
+                        </h3>
+
+                        <p>
+                            From everyday washing
+                            to special garment care,
+                            we've got your laundry covered.
+                        </p>
+
+                        <a asp-controller="Services"
+                           asp-action="Index"
+                           class="tw-blue-button">
+
+                            Browse Services
+                            <i class="bi bi-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+
+                    <img src="~/images/services/wash-fold.jpg"
+                         alt="Fresh folded clothes" />
+
+                </div>
+
+            </section>
+
+
+            <!-- RECENT ACTIVITY -->
+            <section class="tw-home-panel">
+
+                <div class="tw-panel-heading tw-heading-flex">
+
+                    <div>
+                        <h2>Recent Activity</h2>
+                        <p>
+                            Stay updated with your laundry.
+                        </p>
+                    </div>
+
+                    <a asp-controller="Bookings"
+                       asp-action="Index"
+                       class="tw-view-all">
+
+                        View All
+                        <i class="bi bi-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+                <div class="tw-activity-empty">
+
+                    <div class="tw-empty-circle">
+                        <i class="bi bi-bag-check"></i>
+                    </div>
+
+                    <h3>No recent activity yet</h3>
+
+                    <p>
+                        Your latest laundry booking
+                        updates will appear here
+                        when activity tracking is available.
+                    </p>
+
+                    <a asp-controller="Bookings"
+                       asp-action="Index"
+                       class="tw-outline-button">
+
+                        View My Bookings
+
+                    </a>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <!-- RIGHT COLUMN -->
+        <div class="tw-home-right">
+
+            <!-- HOW IT WORKS -->
+            <section class="tw-home-panel">
+
+                <div class="tw-panel-heading">
+
+                    <h2>How It Works</h2>
+
+                    <p>
+                        Simple steps to fresh clothes.
+                    </p>
+
+                </div>
+
+                <div class="tw-process-list">
+
+                    <div class="tw-process-item">
+
+                        <div class="tw-process-icon">
+                            <i class="bi bi-basket"></i>
+                        </div>
+
+                        <div>
+                            <h3>Choose a Service</h3>
+                            <p>
+                                Select your preferred
+                                laundry service.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="tw-process-item">
+
+                        <div class="tw-process-icon">
+                            <i class="bi bi-calendar-check"></i>
+                        </div>
+
+                        <div>
+                            <h3>Book Your Laundry</h3>
+                            <p>
+                                Set your preferred
+                                booking schedule.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="tw-process-item">
+
+                        <div class="tw-process-icon">
+                            <i class="bi bi-truck"></i>
+                        </div>
+
+                        <div>
+                            <h3>Track Your Booking</h3>
+                            <p>
+                                Monitor the status
+                                of your laundry.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="tw-process-item">
+
+                        <div class="tw-process-icon">
+                            <i class="bi bi-stars"></i>
+                        </div>
+
+                        <div>
+                            <h3>Enjoy Fresh Clothes</h3>
+                            <p>
+                                Receive your clean
+                                and fresh laundry.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- PROFILE SHORTCUT -->
+            <section class="tw-profile-shortcut">
+
+                <span class="tw-small-label">
+                    YOUR ACCOUNT
+                </span>
+
+                <h2>Manage Your Profile</h2>
+
+                <p>
+                    Keep your account information
+                    updated for a better laundry
+                    experience.
+                </p>
+
+                <a asp-controller="Profile"
+                   asp-action="Index">
+
+                    View My Profile
+                    <i class="bi bi-arrow-right"></i>
+
+                </a>
+
+            </section>
+
+        </div>
+
     </div>
 
-    <div class="stat-card">
-        <h3>Pending Bookings</h3>
-        <h2>@Model.PendingBookings</h2>
-    </div>
-
-    <div class="stat-card">
-        <h3>Completed Bookings</h3>
-        <h2>@Model.CompletedBookings</h2>
-    </div>
-
-</div>
-
-<!-- MY BOOKINGS -->
-<div class="dashboard-section">
-    <h2>My Bookings</h2>
-    <p>View and monitor your laundry booking requests.</p>
-    <span class="text-muted">No booking records available yet.</span>
-</div>
-
-<!-- LAUNDRY SERVICES -->
-<div class="dashboard-section">
-    <h2>Laundry Services</h2>
-    <p>Explore our available laundry services.</p>
-    <span class="text-muted">Laundry services will be displayed here.</span>
-</div>
-
-<!-- MY PROFILE -->
-<div class="dashboard-section">
-    <h2>My Profile</h2>
-
-    <p class="profile-info">
-        <strong>Full Name:</strong> @Model.FullName
-    </p>
-
-    <p class="profile-info">
-        <strong>Username:</strong> @Model.Username
-    </p>
-
-    <p class="profile-info">
-        <strong>Phone Number:</strong> @Model.PhoneNumber
-    </p>
 </div>

@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "My Bookings";
+    Layout = "_DashboardLayout";
+}
+
+<div class="dashboard-welcome">
+    <h1>My Bookings</h1>
+    <p>Manage and track your laundry bookings.</p>
+</div>
+
+<div class="dashboard-section">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>My Laundry Bookings</h2>
+
+        <button class="btn btn-primary" disabled>
+            + New Booking
+        </button>
+    </div>
+
+    <!-- SEARCH -->
+    <div class="mb-3">
+        <input type="text"
+               class="form-control"
+               placeholder="Search booking ID..."
+               disabled />
+    </div>
+
+    <!-- BOOKING STATUS -->
+    <div class="d-flex gap-2 flex-wrap mb-4">
+        <span class="badge bg-primary">All</span>
+        <span class="badge bg-warning text-dark">Pending</span>
+        <span class="badge bg-info text-dark">Confirmed</span>
+        <span class="badge bg-secondary">Processing</span>
+        <span class="badge bg-success">Completed</span>
+        <span class="badge bg-danger">Cancelled</span>
+    </div>
+
+    <!-- EMPTY BOOKING MESSAGE -->
+    <div class="text-center py-5">
+        <h3>No bookings yet</h3>
+        <p>
+            You haven't made any laundry bookings yet.
+            Your booking history will appear here.
+        </p>
+    </div>
+
+</div>

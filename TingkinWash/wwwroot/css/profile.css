@@ -1,0 +1,427 @@
+﻿
+/* =========================================
+   TINGKINWASH - MY PROFILE PAGE
+========================================= */
+
+.profile-page {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+    /* =========================================
+   PROFILE HERO BANNER
+========================================= */
+
+    .profile-page .profile-hero {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        min-height: 280px;
+        margin-bottom: 28px;
+        border-radius: 15px;
+        overflow: hidden;
+        background: #123653;
+    }
+
+        /* HERO BACKGROUND PHOTO */
+
+        .profile-page .profile-hero .hero-photo {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            z-index: 0;
+        }
+
+        /* NAVY BLUE GRADIENT */
+
+        .profile-page .profile-hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            background: linear-gradient( 90deg, rgba(18, 54, 83, 0.96) 0%, rgba(18, 54, 83, 0.85) 35%, rgba(18, 54, 83, 0.35) 75%, rgba(18, 54, 83, 0.05) 100% );
+        }
+
+        /* HERO TEXT CONTAINER */
+
+        .profile-page .profile-hero .hero-text {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            width: 100%;
+            max-width: 520px;
+            padding: 40px 42px;
+            background: transparent;
+        }
+
+            /* SMALL HERO LABEL */
+
+            .profile-page .profile-hero .hero-text span {
+                display: block;
+                color: #a7dcff;
+                font-size: 11px;
+                font-weight: 700;
+                letter-spacing: 1.6px;
+                margin-bottom: 13px;
+            }
+
+            /* HERO HEADING */
+
+            .profile-page .profile-hero .hero-text h1 {
+                color: #ffffff;
+                font-size: 32px;
+                font-weight: 700;
+                line-height: 1.2;
+                margin: 0 0 14px;
+            }
+
+            /* HERO DESCRIPTION */
+
+            .profile-page .profile-hero .hero-text p {
+                color: #e0ecf5;
+                font-size: 13px;
+                line-height: 1.7;
+                max-width: 360px;
+                margin: 0 0 20px;
+            }
+
+        /* HERO BUTTON */
+
+        .profile-page .profile-hero .hero-btn {
+            display: inline-block;
+            padding: 12px 19px;
+            background: #ffffff;
+            color: #123653;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+            .profile-page .profile-hero .hero-btn:hover {
+                background: #e6f3ff;
+                color: #1267b1;
+            }
+
+/* =========================================
+   MAIN PROFILE CARD
+========================================= */
+
+.profile-card {
+    background: #ffffff;
+    border: 1px solid #e5edf5;
+    border-radius: 18px;
+    padding: 32px;
+    box-shadow: 0 6px 24px rgba(18, 54, 83, 0.06);
+}
+
+/* =========================================
+   ACCOUNT HEADER
+========================================= */
+
+.profile-card-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* PROFILE AVATAR */
+
+.profile-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 82px;
+    height: 82px;
+    background: #e6f3ff;
+    color: #1267b1;
+    border-radius: 50%;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+/* PROFILE NAME */
+
+.profile-identity {
+    min-width: 0;
+}
+
+    .profile-identity h2 {
+        font-size: 23px;
+        font-weight: 700;
+        color: #123653;
+        margin-bottom: 5px;
+    }
+
+    .profile-identity p {
+        font-size: 14px;
+        color: #718096;
+        margin-bottom: 10px;
+        overflow-wrap: anywhere;
+    }
+
+/* CUSTOMER ROLE */
+
+.profile-role {
+    display: inline-block;
+    padding: 6px 12px;
+    background: #eaf4fc;
+    color: #1267b1;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* =========================================
+   DIVIDER
+========================================= */
+
+.profile-divider {
+    height: 1px;
+    width: 100%;
+    background: #edf1f6;
+    margin: 28px 0;
+}
+
+/* =========================================
+   SECTION HEADINGS
+========================================= */
+
+.profile-section-heading {
+    margin-bottom: 20px;
+}
+
+    .profile-section-heading h3 {
+        font-size: 19px;
+        font-weight: 700;
+        color: #123653;
+        margin-bottom: 6px;
+    }
+
+    .profile-section-heading p {
+        font-size: 13px;
+        color: #718096;
+        margin: 0;
+    }
+
+/* =========================================
+   PERSONAL INFORMATION GRID
+========================================= */
+
+.profile-info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+/* INFORMATION BOX */
+
+.profile-info-item {
+    background: #f7f9fc;
+    border: 1px solid #edf1f6;
+    border-radius: 12px;
+    padding: 18px 20px;
+    min-width: 0;
+}
+
+    .profile-info-item label {
+        display: block;
+        font-size: 12px;
+        font-weight: 600;
+        color: #718096;
+        margin-bottom: 10px;
+    }
+
+    .profile-info-item p {
+        font-size: 15px;
+        font-weight: 600;
+        color: #123653;
+        margin: 0;
+        overflow-wrap: anywhere;
+    }
+
+/* =========================================
+   PICKUP ADDRESS
+========================================= */
+
+.profile-address {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    border: 1px solid #edf1f6;
+    border-radius: 12px;
+    background: #f7f9fc;
+}
+
+    .profile-address h4 {
+        font-size: 14px;
+        font-weight: 700;
+        color: #123653;
+        margin-bottom: 8px;
+    }
+
+    .profile-address p {
+        font-size: 13px;
+        color: #718096;
+        margin: 0;
+    }
+
+/* ADDRESS STATUS */
+
+.profile-address-status {
+    background: #e9eef5;
+    color: #64748b;
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* =========================================
+   PROFILE ACTION BUTTONS
+========================================= */
+
+.profile-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* SHARED BUTTON STYLE */
+
+.profile-btn-primary,
+.profile-btn-outline {
+    padding: 12px 22px;
+    border-radius: 9px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+/* EDIT PROFILE BUTTON */
+
+.profile-btn-primary {
+    border: 1px solid #1267b1;
+    background: #1267b1;
+    color: #ffffff;
+}
+
+    .profile-btn-primary:not(:disabled):hover {
+        background: #0d528d;
+    }
+
+/* CHANGE PASSWORD BUTTON */
+
+.profile-btn-outline {
+    border: 1px solid #d5e1eb;
+    background: #ffffff;
+    color: #123653;
+}
+
+    .profile-btn-outline:not(:disabled):hover {
+        background: #eaf4fc;
+    }
+
+/* DISABLED BUTTONS */
+
+.profile-actions button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+/* =========================================
+   RESPONSIVE - TABLET
+========================================= */
+
+@media (max-width: 768px) {
+
+    .profile-page .profile-hero {
+        min-height: 280px;
+    }
+
+        .profile-page .profile-hero::after {
+            background: rgba(18, 54, 83, 0.75);
+        }
+
+        .profile-page .profile-hero .hero-text {
+            padding: 28px;
+        }
+
+            .profile-page .profile-hero .hero-text h1 {
+                font-size: 27px;
+            }
+
+    .profile-card {
+        padding: 22px;
+    }
+
+    .profile-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-card-header {
+        align-items: flex-start;
+    }
+
+    .profile-avatar {
+        width: 65px;
+        height: 65px;
+        font-size: 24px;
+    }
+
+    .profile-identity h2 {
+        font-size: 20px;
+    }
+}
+
+/* =========================================
+   RESPONSIVE - MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+    .profile-page .profile-hero .hero-text {
+        padding: 24px;
+    }
+
+        .profile-page .profile-hero .hero-text h1 {
+            font-size: 25px;
+        }
+
+    .profile-card {
+        padding: 18px;
+    }
+
+    .profile-actions {
+        flex-direction: column;
+    }
+
+        .profile-actions button {
+            width: 100%;
+        }
+
+    .profile-address {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .profile-card-header {
+        gap: 14px;
+    }
+}

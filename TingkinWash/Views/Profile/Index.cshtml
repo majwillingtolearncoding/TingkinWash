@@ -1,0 +1,190 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using TingkinWash.Models
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "My Profile";
+    Layout = "_DashboardLayout";
+
+    var currentUser = await UserManager.GetUserAsync(User);
+
+    var fullName = currentUser?.FullName ?? "Customer";
+    var username = currentUser?.UserName ?? "Not available";
+    var email = currentUser?.Email ?? "Not added yet";
+    var phone = currentUser?.PhoneNumber ?? "Not added yet";
+
+    var initials = !string.IsNullOrWhiteSpace(fullName)
+        ? fullName.Substring(0, 1).ToUpper()
+        : "U";
+}
+
+<link rel="stylesheet"
+      href="~/css/profile.css"
+      asp-append-version="true" />
+
+<div class="profile-page">
+
+    <!-- PROFILE HERO BANNER -->
+    <section class="profile-hero">
+
+        <img src="~/images/services/cover.jpg"
+             alt="TingkinWash Laundry Service"
+             class="hero-photo" />
+
+        <div class="hero-text">
+
+            <span>TINGKINWASH LAUNDRY SERVICE</span>
+
+            <h1>My Profile</h1>
+
+            <p>
+                View and manage your personal information.
+                Keep your TingkinWash account up to date.
+            </p>
+
+            <a asp-controller="Dashboard"
+               asp-action="Index"
+               class="hero-btn">
+                Back to Dashboard
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROFILE CARD -->
+    <div class="profile-card">
+
+        <!-- PROFILE HEADER -->
+        <div class="profile-card-header">
+
+            <div class="profile-avatar">
+                @initials
+            </div>
+
+            <div class="profile-identity">
+
+                <h2>@fullName</h2>
+
+                <p>@email</p>
+
+                <span class="profile-role">
+                    Customer Account
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="profile-divider"></div>
+
+
+        <!-- PERSONAL INFORMATION -->
+        <div class="profile-section-heading">
+
+            <h3>Personal Information</h3>
+
+            <p>Your registered account details.</p>
+
+        </div>
+
+
+        <div class="profile-info-grid">
+
+            <div class="profile-info-item">
+
+                <label>Full Name</label>
+
+                <p>@fullName</p>
+
+            </div>
+
+
+            <div class="profile-info-item">
+
+                <label>Username</label>
+
+                <p>@username</p>
+
+            </div>
+
+
+            <div class="profile-info-item">
+
+                <label>Email Address</label>
+
+                <p>@email</p>
+
+            </div>
+
+
+            <div class="profile-info-item">
+
+                <label>Phone Number</label>
+
+                <p>@phone</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="profile-divider"></div>
+
+
+        <!-- PICKUP INFORMATION -->
+        <div class="profile-section-heading">
+
+            <h3>Pickup Information</h3>
+
+            <p>
+                Your address for future laundry pickup bookings.
+            </p>
+
+        </div>
+
+
+        <div class="profile-address">
+
+            <div>
+
+                <h4>Pickup Address</h4>
+
+                <p>Not added yet</p>
+
+            </div>
+
+            <span class="profile-address-status">
+                Not Set
+            </span>
+
+        </div>
+
+
+        <div class="profile-divider"></div>
+
+
+        <!-- ACCOUNT ACTIONS -->
+        <div class="profile-actions">
+
+            <button type="button"
+                    class="profile-btn-primary"
+                    disabled
+                    title="Profile editing will be added next">
+                Edit Profile
+            </button>
+
+            <button type="button"
+                    class="profile-btn-outline"
+                    disabled
+                    title="Password changing will be added next">
+                Change Password
+            </button>
+
+        </div>
+
+    </div>
+
+</div>

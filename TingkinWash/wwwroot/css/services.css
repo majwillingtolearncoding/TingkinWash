@@ -1,0 +1,445 @@
+﻿
+/* =========================================
+   TINGKINWASH - LAUNDRY SERVICES
+========================================= */
+
+.services-page {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-bottom: 35px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* =========================================
+   PAGE HEADER
+========================================= */
+
+.services-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 28px;
+}
+
+.services-eyebrow,
+.services-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #1683c9;
+    margin-bottom: 10px;
+}
+
+.services-header h1 {
+    font-size: 30px;
+    font-weight: 700;
+    color: #123653;
+    margin-bottom: 8px;
+}
+
+.services-header p {
+    color: #718096;
+    font-size: 14px;
+    margin: 0;
+}
+
+.services-count {
+    padding: 10px 17px;
+    background: #e6f3ff;
+    color: #1267b1;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 30px;
+    white-space: nowrap;
+}
+
+/* =========================================
+   HERO BANNER
+========================================= */
+
+.services-page .services-hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 310px;
+    margin-bottom: 35px;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #123653;
+}
+
+    /* HERO BACKGROUND PHOTO */
+
+    .services-page .services-hero .hero-photo,
+    .services-page .services-hero .services-hero-image {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        z-index: 0;
+    }
+
+    /* DARK GRADIENT */
+
+    .services-page .services-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        background: linear-gradient( 90deg, rgba(18, 54, 83, 0.96) 0%, rgba(18, 54, 83, 0.88) 35%, rgba(18, 54, 83, 0.45) 70%, rgba(18, 54, 83, 0.10) 100% );
+    }
+
+    /* HERO CONTENT */
+
+    .services-page .services-hero .hero-text,
+    .services-page .services-hero .services-hero-content {
+        position: relative;
+        z-index: 5;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        width: 100%;
+        max-width: 520px;
+        padding: 40px 45px;
+        background: transparent;
+        opacity: 1;
+        visibility: visible;
+    }
+
+        /* SMALL LABEL */
+
+        .services-page .services-hero .hero-text span,
+        .services-page .services-hero .services-hero-content span {
+            display: block;
+            color: #a7dcff !important;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+
+        /* MAIN HEADING */
+
+        .services-page .services-hero .hero-text h1,
+        .services-page .services-hero .hero-text h2,
+        .services-page .services-hero .services-hero-content h1,
+        .services-page .services-hero .services-hero-content h2 {
+            display: block;
+            color: #ffffff !important;
+            font-size: 34px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin: 0 0 15px;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* DESCRIPTION */
+
+        .services-page .services-hero .hero-text p,
+        .services-page .services-hero .services-hero-content p {
+            display: block;
+            color: #e0ecf5 !important;
+            font-size: 14px;
+            line-height: 1.7;
+            max-width: 390px;
+            margin: 0 0 23px;
+            opacity: 1;
+            visibility: visible;
+        }
+
+    /* HERO BUTTON */
+
+    .services-page .services-hero .hero-btn,
+    .services-page .services-hero .services-hero-button {
+        display: inline-block;
+        padding: 12px 22px;
+        background: #ffffff;
+        color: #123653 !important;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 700;
+        transition: background 0.2s;
+    }
+
+        .services-page .services-hero .hero-btn:hover,
+        .services-page .services-hero .services-hero-button:hover {
+            background: #e6f3ff;
+            color: #1267b1 !important;
+        }
+
+/* =========================================
+   SERVICES SECTION TITLE
+========================================= */
+
+.services-section-title,
+.services-title {
+    margin-bottom: 22px;
+}
+
+    .services-section-title h2,
+    .services-title h2 {
+        color: #123653;
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+
+    .services-section-title p,
+    .services-title p {
+        color: #718096;
+        font-size: 14px;
+        margin: 0;
+    }
+
+/* =========================================
+   SERVICES GRID
+========================================= */
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+/* =========================================
+   LAUNDRY SERVICE CARDS
+========================================= */
+
+.laundry-card {
+    background: #ffffff;
+    border: 1px solid #e5edf5;
+    border-radius: 17px;
+    overflow: hidden;
+    box-shadow: 0 5px 22px rgba(18,54,83,0.05);
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+    .laundry-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(18,54,83,0.12);
+    }
+
+/* SERVICE IMAGE */
+
+.laundry-image {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    background: #eaf2f8;
+}
+
+    .laundry-image img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s;
+    }
+
+.laundry-card:hover .laundry-image img {
+    transform: scale(1.05);
+}
+
+/* SERVICE CATEGORY LABEL */
+
+.service-tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 7px 13px;
+    border-radius: 30px;
+    background: rgba(255,255,255,0.95);
+    color: #1267b1;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* =========================================
+   SERVICE CARD CONTENT
+========================================= */
+
+.laundry-content {
+    padding: 25px;
+}
+
+    .laundry-content h3 {
+        font-size: 20px;
+        font-weight: 700;
+        color: #123653;
+        margin-bottom: 12px;
+    }
+
+    .laundry-content > p {
+        font-size: 14px;
+        color: #718096;
+        line-height: 1.7;
+        min-height: 72px;
+        margin-bottom: 20px;
+    }
+
+/* SERVICE PRICE */
+
+.service-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    border-top: 1px solid #edf1f6;
+    padding-top: 18px;
+    margin-bottom: 18px;
+}
+
+    .service-price span {
+        font-size: 13px;
+        color: #718096;
+    }
+
+    .service-price strong {
+        color: #1267b1;
+        font-size: 13px;
+    }
+
+/* =========================================
+   BOOK SERVICE BUTTON
+========================================= */
+
+.service-button {
+    display: block;
+    width: 100%;
+    border: none;
+    border-radius: 9px;
+    padding: 13px;
+    background: #1267b1;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    transition: background 0.2s;
+}
+
+    .service-button:not(:disabled):hover {
+        background: #0d528d;
+    }
+
+    .service-button:disabled {
+        opacity: 0.65;
+        cursor: not-allowed;
+    }
+
+/* =========================================
+   BOTTOM BANNER
+========================================= */
+
+.services-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    background: #eaf4fc;
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-top: 32px;
+}
+
+    .services-bottom h3 {
+        font-size: 20px;
+        font-weight: 700;
+        color: #123653;
+    }
+
+    .services-bottom p {
+        color: #718096;
+        font-size: 13px;
+        margin: 0;
+    }
+
+    .services-bottom a {
+        display: inline-block;
+        background: #1267b1;
+        color: #ffffff;
+        text-decoration: none;
+        padding: 12px 22px;
+        border-radius: 9px;
+        font-weight: 700;
+        white-space: nowrap;
+    }
+
+        .services-bottom a:hover {
+            background: #0d528d;
+            color: #ffffff;
+        }
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .services-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+        .services-header h1 {
+            font-size: 27px;
+        }
+
+    .services-page .services-hero {
+        min-height: 300px;
+    }
+
+        .services-page .services-hero::after {
+            background: rgba(18,54,83,0.75);
+        }
+
+        .services-page .services-hero .hero-text,
+        .services-page .services-hero .services-hero-content {
+            padding: 28px;
+        }
+
+            .services-page .services-hero .hero-text h1,
+            .services-page .services-hero .hero-text h2,
+            .services-page .services-hero .services-hero-content h1,
+            .services-page .services-hero .services-hero-content h2 {
+                font-size: 28px;
+            }
+
+    .services-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .laundry-image {
+        height: 180px;
+    }
+
+    .laundry-content {
+        padding: 20px;
+    }
+
+    .services-page .services-hero .hero-text,
+    .services-page .services-hero .services-hero-content {
+        padding: 24px;
+    }
+}
