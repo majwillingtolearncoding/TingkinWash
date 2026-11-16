@@ -4,7 +4,7 @@
 }
 
 <link rel="stylesheet"
-      href="/css/services.css"
+      href="~/css/services.css"
       asp-append-version="true" />
 
 <div class="services-page">
@@ -12,13 +12,15 @@
     <!-- HERO SECTION -->
     <section class="services-hero">
 
-        <img src="/images/services/cover.jpg"
+        <img src="~/images/services/cover.jpg"
              alt="TingkinWash Laundry Service"
              class="hero-photo" />
 
         <div class="hero-text">
 
-            <span>TINGKINWASH LAUNDRY SERVICE</span>
+            <span>
+                TINGKINWASH LAUNDRY SERVICE
+            </span>
 
             <h1>Our Laundry Services</h1>
 
@@ -38,15 +40,16 @@
 
     </section>
 
-        
 
-    <!-- HERO SECTION -->
     <!-- SERVICES TITLE -->
     <div class="services-title">
 
         <div>
             <h2>Choose Your Service</h2>
-            <p>Find the laundry care that suits you.</p>
+
+            <p>
+                Find the laundry care that suits you.
+            </p>
         </div>
 
         <span class="services-count">
@@ -55,22 +58,23 @@
 
     </div>
 
-    
 
     <!-- SERVICES GRID -->
     <div class="services-grid">
 
-        <!-- WASH & FOLD -->
+        <!-- SERVICE 01: WASH & FOLD -->
         <div class="laundry-card">
 
             <div class="laundry-image">
-                <img src="/images/services/wash-fold.jpg"
+
+                <img src="~/images/services/wash-fold.jpg"
                      alt="Colorful folded laundry"
                      loading="lazy" />
 
                 <span class="service-tag">
                     Everyday Care
                 </span>
+
             </div>
 
             <div class="laundry-content">
@@ -84,30 +88,41 @@
                 </p>
 
                 <div class="service-price">
+
                     <span>Service Rate</span>
-                    <strong>Price set by admin</strong>
+
+                    <strong>
+                        Price set by admin
+                    </strong>
+
                 </div>
 
-                <button class="service-button"
-                        type="button"
-                        disabled>
+                <a asp-controller="Bookings"
+                   asp-action="Create"
+                   asp-route-service="Wash & Fold"
+                   class="service-button"
+                   style="text-decoration:none;text-align:center;">
                     Book Service
-                </button>
+                </a>
 
             </div>
+
         </div>
 
-        <!-- DRY CLEANING -->
+
+        <!-- SERVICE 02: DRY CLEANING -->
         <div class="laundry-card">
 
             <div class="laundry-image">
-                <img src="/images/services/dry-cleaning.jpg"
+
+                <img src="~/images/services/dry-cleaning.jpg"
                      alt="Clean shirts hanging on a rack"
                      loading="lazy" />
 
                 <span class="service-tag">
                     Special Care
                 </span>
+
             </div>
 
             <div class="laundry-content">
@@ -121,30 +136,41 @@
                 </p>
 
                 <div class="service-price">
+
                     <span>Service Rate</span>
-                    <strong>Price set by admin</strong>
+
+                    <strong>
+                        Price set by admin
+                    </strong>
+
                 </div>
 
-                <button class="service-button"
-                        type="button"
-                        disabled>
+                <a asp-controller="Bookings"
+                   asp-action="Create"
+                   asp-route-service="Dry Cleaning"
+                   class="service-button"
+                   style="text-decoration:none;text-align:center;">
                     Book Service
-                </button>
+                </a>
 
             </div>
+
         </div>
 
-        <!-- WASH DRY FOLD -->
+
+        <!-- SERVICE 03: WASH, DRY & FOLD -->
         <div class="laundry-card">
 
             <div class="laundry-image">
-                <img src="/images/services/wash-dry-fold.jpg"
+
+                <img src="~/images/services/wash-dry-fold.jpg"
                      alt="Modern laundry machines"
                      loading="lazy" />
 
                 <span class="service-tag">
                     Complete Care
                 </span>
+
             </div>
 
             <div class="laundry-content">
@@ -158,30 +184,41 @@
                 </p>
 
                 <div class="service-price">
+
                     <span>Service Rate</span>
-                    <strong>Price set by admin</strong>
+
+                    <strong>
+                        Price set by admin
+                    </strong>
+
                 </div>
 
-                <button class="service-button"
-                        type="button"
-                        disabled>
+                <a asp-controller="Bookings"
+                   asp-action="Create"
+                   asp-route-service="Wash, Dry & Fold"
+                   class="service-button"
+                   style="text-decoration:none;text-align:center;">
                     Book Service
-                </button>
+                </a>
 
             </div>
+
         </div>
 
-        <!-- EXPRESS LAUNDRY -->
+
+        <!-- SERVICE 04: EXPRESS LAUNDRY -->
         <div class="laundry-card">
 
             <div class="laundry-image">
-                <img src="/images/services/express-laundry.png"
+
+                <img src="~/images/services/express-laundry.png"
                      alt="TingkinWash laundry team"
                      loading="lazy" />
 
                 <span class="service-tag">
                     Priority Service
                 </span>
+
             </div>
 
             <div class="laundry-content">
@@ -195,31 +232,42 @@
                 </p>
 
                 <div class="service-price">
+
                     <span>Service Rate</span>
-                    <strong>Price set by admin</strong>
+
+                    <strong>
+                        Price set by admin
+                    </strong>
+
                 </div>
 
-                <button class="service-button"
-                        type="button"
-                        disabled>
+                <a asp-controller="Bookings"
+                   asp-action="Create"
+                   asp-route-service="Express Laundry"
+                   class="service-button"
+                   style="text-decoration:none;text-align:center;">
                     Book Service
-                </button>
+                </a>
 
             </div>
+
         </div>
 
     </div>
+
 
     <!-- BOTTOM SECTION -->
     <div class="services-bottom">
 
         <div>
+
             <h3>Ready for Fresh Clothes?</h3>
 
             <p>
                 Let TingkinWash make your
                 laundry experience easier.
             </p>
+
         </div>
 
         <a asp-controller="Bookings"

@@ -1,48 +1,336 @@
-﻿@{
+﻿@model IEnumerable<TingkinWash.Models.Booking>
+
+@{
     ViewData["Title"] = "My Bookings";
     Layout = "_DashboardLayout";
+
+    var bookings = Model.ToList();
+
+    var total = bookings.Count;
+    var pending = bookings.Count(b => b.Status == "Pending");
+
+    var processing = bookings.Count(b =>
+        b.Status == "Confirmed" ||
+        b.Status == "Processing" ||
+        b.Status == "Ready for Pickup");
+
+    var completed = bookings.Count(b => b.Status == "Completed");
+
+    var currentStatus = ViewBag.Status as string ?? "All";
+    var currentSearch = ViewBag.Search as string ?? "";
 }
 
-<div class="dashboard-welcome">
-    <h1>My Bookings</h1>
-    <p>Manage and track your laundry bookings.</p>
-</div>
+<link rel="stylesheet"
+      href="~/css/bookings.css"
+      asp-append-version="true" />
 
-<div class="dashboard-section">
+<div class="bookings-page">
 
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2>My Laundry Bookings</h2>
+    <!-- PAGE HEADER -->
+    <div class="bookings-heading">
+        <div>
+            <span class="bookings-eyebrow">CUSTOMER PORTAL</span>
+            <h1>My Bookings</h1>
+            <p>Track, manage, and update your laundry bookings.</p>
+        </div>
 
-        <button class="btn btn-primary" disabled>
-            + New Booking
-        </button>
+        <a asp-controller="Services"
+           asp-action="Index"
+           class="bookings-new-btn">
+            + Book Service
+        </a>
     </div>
 
-    <!-- SEARCH -->
-    <div class="mb-3">
-        <input type="text"
-               class="form-control"
-               placeholder="Search booking ID..."
-               disabled />
+    <!-- ALERTS -->
+    @if (TempData["Success"] != null)
+    {
+        <div class="bookings-alert success">
+            @TempData["Success"]
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="bookings-alert error">
+            @TempData["Error"]
+        </div>
+    }
+
+    <!-- SUMMARY CARDS -->
+    <div class="bookings-stats">
+
+        <div class="booking-stat">
+            <div class="stat-icon">▦</div>
+            <div>
+                <span>Total Bookings</span>
+                <h2>@total</h2>
+            </div>
+        </div>
+
+        <div class="booking-stat pending">
+            <div class="stat-icon">◷</div>
+            <div>
+                <span>Pending</span>
+                <h2>@pending</h2>
+            </div>
+        </div>
+
+        <div class="booking-stat processing">
+            <div class="stat-icon">↻</div>
+            <div>
+                <span>In Progress</span>
+                <h2>@processing</h2>
+            </div>
+        </div>
+
+        <div class="booking-stat completed">
+            <div class="stat-icon">✓</div>
+            <div>
+                <span>Completed</span>
+                <h2>@completed</h2>
+            </div>
+        </div>
+
     </div>
 
-    <!-- BOOKING STATUS -->
-    <div class="d-flex gap-2 flex-wrap mb-4">
-        <span class="badge bg-primary">All</span>
-        <span class="badge bg-warning text-dark">Pending</span>
-        <span class="badge bg-info text-dark">Confirmed</span>
-        <span class="badge bg-secondary">Processing</span>
-        <span class="badge bg-success">Completed</span>
-        <span class="badge bg-danger">Cancelled</span>
-    </div>
+    <!-- BOOKING HISTORY -->
+    <section class="bookings-panel">
 
-    <!-- EMPTY BOOKING MESSAGE -->
-    <div class="text-center py-5">
-        <h3>No bookings yet</h3>
-        <p>
-            You haven't made any laundry bookings yet.
-            Your booking history will appear here.
-        </p>
-    </div>
+        <div class="bookings-panel-header">
+            <div>
+                <h2>Booking History</h2>
+                <p>View your laundry orders and their status.</p>
+            </div>
+        </div>
+
+        <!-- SEARCH AND FILTER -->
+        <form method="get"
+              asp-controller="Bookings"
+              asp-action="Index"
+              class="bookings-toolbar">
+
+            <input type="text"
+                   name="search"
+                   value="@currentSearch"
+                   placeholder="Search booking ID or service..."
+                   class="booking-search" />
+
+            <select name="status" class="booking-filter">
+
+                <option value="All"
+                        selected="@(currentStatus == "All")">
+                    All Status
+                </option>
+
+                <option value="Pending"
+                        selected="@(currentStatus == "Pending")">
+                    Pending
+                </option>
+
+                <option value="Confirmed"
+                        selected="@(currentStatus == "Confirmed")">
+                    Confirmed
+                </option>
+
+                <option value="Processing"
+                        selected="@(currentStatus == "Processing")">
+                    Processing
+                </option>
+
+                <option value="Ready for Pickup"
+                        selected="@(currentStatus == "Ready for Pickup")">
+                    Ready for Pickup
+                </option>
+
+                <option value="Completed"
+                        selected="@(currentStatus == "Completed")">
+                    Completed
+                </option>
+
+                <option value="Cancelled"
+                        selected="@(currentStatus == "Cancelled")">
+                    Cancelled
+                </option>
+
+            </select>
+
+            <button type="submit" class="booking-search-btn">
+                Search
+            </button>
+
+            <a asp-action="Index" class="booking-clear-btn">
+                Reset
+            </a>
+        </form>
+
+        <!-- BOOKINGS TABLE -->
+        <div class="bookings-table-wrap">
+
+            <table class="bookings-table">
+
+                <thead>
+                    <tr>
+                        <th>Booking ID</th>
+                        <th>Laundry Service</th>
+                        <th>Weight</th>
+                        <th>Pickup Date</th>
+                        <th>Pickup Time</th>
+                        <th>Total Price</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @if (!bookings.Any())
+                    {
+                        <tr>
+                            <td colspan="8">
+                                <div class="bookings-empty">
+
+                                    <div class="empty-symbol">▦</div>
+
+                                    <h3>No bookings found</h3>
+
+                                    <p>
+                                        Your laundry bookings will appear here.
+                                    </p>
+
+                                    <a asp-controller="Services"
+                                       asp-action="Index">
+                                        Explore Laundry Services
+                                    </a>
+
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var booking in bookings)
+                        {
+                            var statusClass = booking.Status switch
+                            {
+                                "Pending" => "pending",
+                                "Confirmed" => "processing",
+                                "Processing" => "processing",
+                                "Ready for Pickup" => "processing",
+                                "Completed" => "completed",
+                                "Cancelled" => "cancelled",
+                                _ => "default"
+                            };
+
+                            var pickupDate = booking.PickupDate
+                                .ToString("MMM dd, yyyy");
+
+                            var pickupTime = DateTime.Today
+                                .Add(booking.PickupTime)
+                                .ToString("hh:mm tt");
+
+                            var weightText =
+                                booking.Weight.HasValue &&
+                                booking.Weight.Value > 0
+                                    ? booking.Weight.Value.ToString("0.##") + " kg"
+                                    : "Not yet set";
+
+                            var priceText = booking.TotalPrice.HasValue
+                                ? "₱" + booking.TotalPrice.Value.ToString("N2")
+                                : "Not yet set";
+
+                            <tr>
+
+                                <td class="booking-id">
+                                    #@booking.BookingId
+                                </td>
+
+                                <td>
+                                    <strong>@booking.ServiceName</strong>
+                                </td>
+
+                                <td>@weightText</td>
+
+                                <td>@pickupDate</td>
+
+                                <td>@pickupTime</td>
+
+                                <td>@priceText</td>
+
+                                <td>
+                                    <span class="booking-status @statusClass">
+                                        @booking.Status
+                                    </span>
+                                </td>
+
+                                <!-- CRUD ACTIONS -->
+                                <td>
+                                    <div class="booking-actions">
+
+                                        <!-- VIEW -->
+                                        <a asp-controller="Bookings"
+                                           asp-action="Details"
+                                           asp-route-id="@booking.BookingId"
+                                           class="action-btn view">
+                                            View
+                                        </a>
+
+                                        @if (booking.Status == "Pending")
+                                        {
+                                            <!-- EDIT -->
+                                            <a asp-controller="Bookings"
+                                               asp-action="Edit"
+                                               asp-route-id="@booking.BookingId"
+                                               class="action-btn edit">
+                                                Edit
+                                            </a>
+
+                                            <!-- CANCEL -->
+                                            <form asp-controller="Bookings"
+                                                  asp-action="Cancel"
+                                                  asp-route-id="@booking.BookingId"
+                                                  method="post"
+                                                  onsubmit="return confirm('Are you sure you want to cancel this booking?');">
+
+                                                @Html.AntiForgeryToken()
+
+                                                <button type="submit"
+                                                        class="action-btn cancel">
+                                                    Cancel
+                                                </button>
+                                            </form>
+                                        }
+
+                                        @if (booking.Status == "Cancelled")
+                                        {
+                                            <!-- DELETE -->
+                                            <form asp-controller="Bookings"
+                                                  asp-action="Delete"
+                                                  asp-route-id="@booking.BookingId"
+                                                  method="post"
+                                                  onsubmit="return confirm('Permanently delete this booking? This action cannot be undone.');">
+
+                                                @Html.AntiForgeryToken()
+
+                                                <button type="submit"
+                                                        class="action-btn delete">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        }
+
+                                    </div>
+                                </td>
+
+                            </tr>
+                        }
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
 
 </div>

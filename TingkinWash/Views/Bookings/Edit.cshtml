@@ -1,0 +1,111 @@
+﻿@model TingkinWash.Models.Booking
+
+@{
+    ViewData["Title"] = "Edit Booking";
+    Layout = "_DashboardLayout";
+}
+
+<link rel="stylesheet"
+      href="~/css/bookings.css"
+      asp-append-version="true" />
+
+<div class="bookings-page">
+
+    <div class="bookings-heading">
+        <div>
+            <span class="bookings-eyebrow">UPDATE BOOKING</span>
+            <h1>Edit Booking #@Model.BookingId</h1>
+            <p>Update your pickup details before confirmation.</p>
+        </div>
+
+        <a asp-action="Index"
+           class="booking-clear-btn">
+            Back
+        </a>
+    </div>
+
+    <div class="bookings-panel"
+         style="max-width:750px;">
+
+        <div style="padding:20px;background:#eaf4ff;border-radius:12px;margin-bottom:25px;">
+            <span style="font-size:12px;color:#718096;">
+                SELECTED LAUNDRY SERVICE
+            </span>
+
+            <h2 style="margin:8px 0 0;color:#123653;">
+                @Model.ServiceName
+            </h2>
+        </div>
+
+        <form asp-action="Edit"
+              asp-route-id="@Model.BookingId"
+              method="post">
+
+            @Html.AntiForgeryToken()
+
+            <div asp-validation-summary="ModelOnly"
+                 class="text-danger"></div>
+
+            <div style="margin-bottom:20px;">
+                <label asp-for="PickupDate"
+                       style="display:block;margin-bottom:8px;font-weight:600;">
+                    Pickup Date
+                </label>
+
+                <input asp-for="PickupDate"
+                       type="date"
+                       class="booking-search"
+                       style="width:100%;" />
+
+                <span asp-validation-for="PickupDate"
+                      class="text-danger"></span>
+            </div>
+
+            <div style="margin-bottom:20px;">
+                <label asp-for="PickupTime"
+                       style="display:block;margin-bottom:8px;font-weight:600;">
+                    Pickup Time
+                </label>
+
+                <input asp-for="PickupTime"
+                       type="time"
+                       class="booking-search"
+                       style="width:100%;" />
+
+                <span asp-validation-for="PickupTime"
+                      class="text-danger"></span>
+            </div>
+
+            <div style="margin-bottom:25px;">
+                <label asp-for="PickupAddress"
+                       style="display:block;margin-bottom:8px;font-weight:600;">
+                    Pickup Address
+                </label>
+
+                <textarea asp-for="PickupAddress"
+                          rows="4"
+                          class="booking-search"
+                          style="width:100%;resize:vertical;"></textarea>
+
+                <span asp-validation-for="PickupAddress"
+                      class="text-danger"></span>
+            </div>
+
+            <div style="display:flex;gap:12px;flex-wrap:wrap;">
+
+                <button type="submit"
+                        class="booking-search-btn">
+                    Save Changes
+                </button>
+
+                <a asp-action="Index"
+                   class="booking-clear-btn">
+                    Cancel
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+</div>

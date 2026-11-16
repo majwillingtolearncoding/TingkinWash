@@ -1,0 +1,223 @@
+﻿@model TingkinWash.Models.Booking
+
+@{
+    ViewData["Title"] = "Book Laundry Service";
+    Layout = "_DashboardLayout";
+
+    var service = Model?.ServiceName ?? "";
+}
+
+<link rel="stylesheet"
+      href="~/css/booking-create.css"
+      asp-append-version="true" />
+
+<div class="booking-page">
+
+    <!-- BACK LINK -->
+    <a asp-controller="Services"
+       asp-action="Index"
+       class="booking-back">
+        <span>←</span> Back to Services
+    </a>
+
+    <!-- PAGE HEADING -->
+    <div class="booking-heading">
+        <span class="booking-eyebrow">
+            TINGKINWASH LAUNDRY SERVICE
+        </span>
+
+        <h1>Book Laundry Service</h1>
+
+        <p>
+            Schedule your laundry pickup and
+            we'll take care of the rest.
+        </p>
+    </div>
+
+    <!-- MAIN BOOKING CARD -->
+    <div class="booking-container">
+
+        <!-- LEFT PANEL -->
+        <div class="booking-sidebar">
+
+            <div class="booking-sidebar-overlay"></div>
+
+            <div class="booking-sidebar-content">
+
+                <div class="booking-sidebar-icon">
+                    <i class="bi bi-calendar-check"></i>
+                </div>
+
+                <h2>Laundry Booking</h2>
+
+                <p>
+                    Simple, convenient, and reliable
+                    laundry care.
+                </p>
+
+                <div class="booking-steps">
+
+                    <div class="booking-step">
+                        <span>✓</span>
+                        Select Service
+                    </div>
+
+                    <div class="booking-step">
+                        <span>✓</span>
+                        Set Schedule
+                    </div>
+
+                    <div class="booking-step">
+                        <span>✓</span>
+                        Provide Address
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- RIGHT PANEL -->
+        <div class="booking-form-panel">
+
+            <form asp-controller="Bookings"
+                  asp-action="Create"
+                  method="post">
+
+                @Html.AntiForgeryToken()
+
+                <div asp-validation-summary="ModelOnly"
+                     class="text-danger mb-3"></div>
+
+                <!-- SELECTED SERVICE -->
+                <div class="booking-field">
+                    <span class="booking-section-label">
+                        SELECTED SERVICE
+                    </span>
+
+                    <div class="selected-service">
+
+                        <div class="selected-service-icon">
+                            <i class="bi bi-basket2"></i>
+                        </div>
+
+                        <div class="selected-service-info">
+                            <h3>@service</h3>
+                            <p>
+                                Your selected laundry service
+                            </p>
+                        </div>
+
+                        <div class="selected-check">
+                            <i class="bi bi-check-lg"></i>
+                        </div>
+
+                    </div>
+
+                    <input type="hidden"
+                           asp-for="ServiceName" />
+
+                    <span asp-validation-for="ServiceName"
+                          class="text-danger"></span>
+                </div>
+
+                <!-- PICKUP SCHEDULE -->
+                <div class="booking-form-grid">
+
+                    <div class="booking-field">
+
+                        <label asp-for="PickupDate">
+                            <i class="bi bi-calendar3"></i>
+                            Pickup Date
+                        </label>
+
+                        <input asp-for="PickupDate"
+                               type="date"
+                               class="booking-input"
+                               min="@DateTime.Today.ToString("yyyy-MM-dd")"
+                               required />
+
+                        <span asp-validation-for="PickupDate"
+                              class="text-danger"></span>
+                    </div>
+
+                    <div class="booking-field">
+
+                        <label asp-for="PickupTime">
+                            <i class="bi bi-clock"></i>
+                            Pickup Time
+                        </label>
+
+                        <input asp-for="PickupTime"
+                               type="time"
+                               class="booking-input"
+                               required />
+
+                        <span asp-validation-for="PickupTime"
+                              class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <!-- PICKUP ADDRESS -->
+                <div class="booking-field">
+
+                    <label asp-for="PickupAddress">
+                        <i class="bi bi-geo-alt"></i>
+                        Pickup Address
+                    </label>
+
+                    <textarea asp-for="PickupAddress"
+                              class="booking-textarea"
+                              rows="4"
+                              placeholder="Enter your complete pickup address (House No., Street, Barangay, City)"
+                              required></textarea>
+
+                    <span asp-validation-for="PickupAddress"
+                          class="text-danger"></span>
+                </div>
+
+                <!-- PRICE NOTICE -->
+                <div class="booking-notice">
+
+                    <div class="booking-notice-icon">
+                        <i class="bi bi-info-circle"></i>
+                    </div>
+
+                    <div>
+                        <h4>Weight &amp; Pricing</h4>
+
+                        <p>
+                            The admin will record your laundry
+                            weight and calculate the total price
+                            after checking your clothes.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- SUBMIT BUTTON -->
+                <button type="submit"
+                        class="booking-submit">
+
+                    <i class="bi bi-calendar-check"></i>
+                    Confirm Booking
+
+                </button>
+
+                <p class="booking-footer-note">
+                    Your booking will be submitted
+                    with a Pending status.
+                </p>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -12,5 +12,7 @@ namespace TingkinWash.Data
             : base(options)
         {
         }
+
+        public DbSet<Booking> Bookings { get; set; }
     }
 }

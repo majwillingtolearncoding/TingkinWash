@@ -38,57 +38,105 @@
 </section>
 
 <!-- SERVICES SECTION -->
-<section id="services" class="section-container services-section">
+<!-- SERVICES SECTION -->
+<section id="services" class="services-section">
 
-    <div class="section-heading">
-        <span class="section-label">WHAT WE OFFER</span>
-        <h2>Our Laundry Services</h2>
-        <p>Quality laundry care for your everyday needs.</p>
-    </div>
+    <div class="section-container">
 
-    <div class="service-grid">
-
-        <div class="service-card">
-            <div class="service-icon">👕</div>
-            <span class="service-number">SERVICE 01</span>
-            <h3>Personal Laundry</h3>
-            <p>
-                Professional cleaning for your everyday
-                clothes, keeping them fresh and clean.
-            </p>
-            <a href="/Account/Login" class="service-link">
-                Learn More <span>→</span>
-            </a>
+        <div class="section-heading">
+            <span class="section-label">WHAT WE OFFER</span>
+            <h2>Our Laundry Services</h2>
+            <p>Quality laundry care for your everyday needs.</p>
         </div>
 
-        <div class="service-card">
-            <div class="service-icon">🧥</div>
-            <span class="service-number">SERVICE 02</span>
-            <h3>Dry Cleaning</h3>
-            <p>
-                Special care for delicate fabrics,
-                formal wear, and your favorite garments.
-            </p>
-            <a href="/Account/Login" class="service-link">
-                Learn More <span>→</span>
-            </a>
-        </div>
+        <div class="service-grid">
 
-        <div class="service-card">
-            <div class="service-icon">🚚</div>
-            <span class="service-number">SERVICE 03</span>
-            <h3>Pick-up and Delivery</h3>
-            <p>
-                Enjoy convenient laundry collection
-                and delivery with less effort.
-            </p>
-            <a href="/Account/Login" class="service-link">
-                Learn More <span>→</span>
-            </a>
-        </div>
+            <!-- SERVICE 01 -->
+            <div class="service-card">
 
+                <img src="/images/landing/personal-laundryy.jpg"
+                     class="service-image"
+                     alt="Personal Laundry"
+                     loading="lazy" />
+
+                <div class="service-card-body">
+                    <span class="service-number">SERVICE 01</span>
+
+                    <h3>Personal Laundry</h3>
+
+                    <p>
+                        Professional cleaning for your everyday
+                        clothes, keeping them fresh and clean.
+                    </p>
+
+                    <a asp-controller="Account"
+                       asp-action="Register"
+                       class="service-link">
+                        Book Now &rarr;
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- SERVICE 02 -->
+            <div class="service-card">
+
+                <img src="/images/landing/dry cleaning.jpg"
+                     class="service-image"
+                     alt="Dry Cleaning"
+                     loading="lazy" />
+
+                <div class="service-card-body">
+                    <span class="service-number">SERVICE 02</span>
+
+                    <h3>Dry Cleaning</h3>
+
+                    <p>
+                        Special care for delicate fabrics,
+                        formal wear, and your favorite garments.
+                    </p>
+
+                    <a asp-controller="Account"
+                       asp-action="Register"
+                       class="service-link">
+                        Book Now &rarr;
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- SERVICE 03 -->
+            <div class="service-card">
+
+                <img src="/images/landing/delivery.jpg"
+                     class="service-image"
+                     alt="Pick-up and Delivery"
+                     loading="lazy" />
+
+                <div class="service-card-body">
+                    <span class="service-number">SERVICE 03</span>
+
+                    <h3>Pick-up &amp; Delivery</h3>
+
+                    <p>
+                        Enjoy convenient laundry collection
+                        and delivery with less effort.
+                    </p>
+
+                    <a asp-controller="Account"
+                       asp-action="Register"
+                       class="service-link">
+                        Book Now &rarr;
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
     </div>
 </section>
+
+
 
 <!-- WHY CHOOSE US -->
 <section class="why-section">

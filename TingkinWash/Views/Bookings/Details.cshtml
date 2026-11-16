@@ -1,0 +1,149 @@
+﻿@model TingkinWash.Models.Booking
+
+@{
+    ViewData["Title"] = "Booking Details";
+    Layout = "_DashboardLayout";
+
+    var pickupTime = DateTime.Today
+        .Add(Model.PickupTime)
+        .ToString("hh:mm tt");
+
+    var pickupDate = Model.PickupDate.ToString("MMMM dd, yyyy");
+
+    var weightText = Model.Weight.HasValue && Model.Weight.Value > 0
+        ? Model.Weight.Value.ToString("0.##") + " kg"
+        : "To be updated by admin";
+
+    var priceText = Model.TotalPrice.HasValue
+        ? "₱" + Model.TotalPrice.Value.ToString("N2")
+        : "To be calculated by admin";
+}
+
+<link rel="stylesheet"
+      href="~/css/bookings.css"
+      asp-append-version="true" />
+
+<div class="bookings-page">
+
+    <!-- HEADER -->
+    <div class="bookings-heading">
+        <div>
+            <span class="bookings-eyebrow">
+                BOOKING INFORMATION
+            </span>
+
+            <h1>Booking #@Model.BookingId</h1>
+            <p>Review the details of your laundry booking.</p>
+        </div>
+
+        <a asp-controller="Bookings"
+           asp-action="Index"
+           class="booking-clear-btn">
+            Back to My Bookings
+        </a>
+    </div>
+
+    <!-- BOOKING DETAILS -->
+    <div class="bookings-panel">
+
+        <div class="bookings-panel-header">
+            <div>
+                <h2>@Model.ServiceName</h2>
+                <p>Your laundry booking information.</p>
+            </div>
+
+            <span class="booking-status
+                @(Model.Status == "Pending" ? "pending" :
+  Model.Status == "Completed" ? "completed" :
+  Model.Status == "Cancelled" ? "cancelled" :
+  "processing")">
+                @Model.Status
+            </span>
+        </div>
+
+        <div class="profile-info-grid"
+             style="display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+            gap:18px;
+            margin-top:25px;">
+
+            <div>
+                <strong>Booking ID</strong>
+                <p>#@Model.BookingId</p>
+            </div>
+
+            <div>
+                <strong>Laundry Service</strong>
+                <p>@Model.ServiceName</p>
+            </div>
+
+            <div>
+                <strong>Booking Status</strong>
+                <p>@Model.Status</p>
+            </div>
+
+            <div>
+                <strong>Pickup Date</strong>
+                <p>@pickupDate</p>
+            </div>
+
+            <div>
+                <strong>Pickup Time</strong>
+                <p>@pickupTime</p>
+            </div>
+
+            <div>
+                <strong>Laundry Weight</strong>
+                <p>@weightText</p>
+            </div>
+
+            <div>
+                <strong>Total Price</strong>
+                <p>@priceText</p>
+            </div>
+
+            <div>
+                <strong>Booking Date</strong>
+                <p>@Model.BookingDate.ToString("MMMM dd, yyyy")</p>
+            </div>
+
+            <div style="grid-column:1/-1;">
+                <strong>Pickup Address</strong>
+                <p>@Model.PickupAddress</p>
+            </div>
+
+        </div>
+
+        <!-- ACTIONS -->
+        @if (Model.Status == "Pending")
+        {
+            <div style="display:flex;
+                flex-wrap:wrap;
+                gap:12px;
+                margin-top:25px;">
+
+                <a asp-controller="Bookings"
+                   asp-action="Edit"
+                   asp-route-id="@Model.BookingId"
+                   class="bookings-new-btn">
+                    Edit Booking
+                </a>
+
+                <form asp-controller="Bookings"
+                      asp-action="Cancel"
+                      asp-route-id="@Model.BookingId"
+                      method="post"
+                      onsubmit="return confirm('Are you sure you want to cancel this booking?');">
+
+                    @Html.AntiForgeryToken()
+
+                    <button type="submit"
+                            class="action-btn cancel">
+                        Cancel Booking
+                    </button>
+                </form>
+            </div>
+        }
+
+    </div>
+</div>
